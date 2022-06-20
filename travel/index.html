@@ -5,10 +5,43 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="ico/favicon.svg" type="image/svg">
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/styles.css">
 	<title>Travel portal</title>
 
 </head>
 <body>
-	
+	<header class="header">
+		<p class="header__title">
+			Travel Portal
+		</p>
+		<nav class="header__menu menu">
+			<ul class="header__list">
+				<li class="menu__item"><a href="#" class="menu__link">How It Works</a></li>
+				<li class="menu__item"><a href="#" class="menu__link">Plan Your Trip</a></li>
+				<li class="menu__item"><a href="#" class="menu__link">Destinations</a></li>
+				<li class="menu__item"><a href="#" class="menu__link">Travel Stories</a></li>
+			</ul>
+		</nav>
+		<a href="#" class="header__button">
+			Login
+		</a>
+	</header>
+	<main class="main">
+		<section class="prewiev">
+			<div class="prewiev__container">
+				<h1 class="prewiev__header">
+					Explore the beauty of the World
+				</h1>
+				<p class="prewiev__text">
+					Receive personalized recommendations for countries, hotels, activities and more
+				</p>
+				<form action="#" class="form">
+					<input type="search" id="form__search" class="form__search" placeholder="What would you like to do?">
+					<input type="submit" class="form__button" value="Start Planning">
+				</form>
+			</div>
+		</section>
+	</main>
 </body>
 </html>
