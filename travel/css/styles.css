@@ -294,6 +294,8 @@ body {
 	position: relative;
 	box-sizing: border-box;
 	padding: 0 0 0 50px;
+	border: none;
+	
 }
 .button::before {
 	content: '';
@@ -303,4 +305,64 @@ body {
 	width: 40px;
 	top: 9.5px;
 	left: 31px;
+}
+.stories {
+	width: 1201px;
+	height: 1322px;
+	margin: 167px auto 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.stories__header {
+	font-family: RedHatText, sans-serif;
+	font-size: 40px;
+	line-height: 53px;
+	color: #F2785C;
+	margin: 0;
+}
+.stories__all {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	margin: 80px 0px 0px 0px;
+	
+}
+.storycard {
+	display: flex;
+	gap: 40px;
+}
+.storycard__img {
+	width: 400px;
+	height: 250px;
+	border-radius: 16px;
+	box-shadow: 0px 4px 4px #0D606F;
+}
+.storycard__text {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+.storycard__text--main {
+	margin: 0;
+	font-family: Aleo, sans-serif;
+	font-size: 35px;
+	line-height: 42px;
+	font-weight: normal;
+	color: #0D606F;
+}
+.storycard__text--basic {
+	margin: 0;
+	font-family: Aleo, sans-serif;
+	font-size: 20px;
+	line-height: 24px;
+	color: #0D606F;
+}
+.storycard__text--basic a:visited,
+.storycard__text--basic a {
+	color: #0D606F;
+	font-weight: bold;
+}
+.story-button {
+	margin: 40px 0px 0px 0px;
 }
