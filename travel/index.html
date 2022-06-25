@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,22 +18,22 @@
 		</p>
 		<nav class="header__menu menu">
 			<ul class="header__list">
-				<li class="menu__item"><a href="#" class="menu__link">How It Works</a></li>
-				<li class="menu__item"><a href="#" class="menu__link">Plan Your Trip</a></li>
-				<li class="menu__item"><a href="#" class="menu__link">Destinations</a></li>
-				<li class="menu__item"><a href="#" class="menu__link">Travel Stories</a></li>
+				<li class="menu__item"><a href="#how-works" class="menu__link">How It Works</a></li>
+				<li class="menu__item"><a href="#trip" class="menu__link">Plan Your Trip</a></li>
+				<li class="menu__item"><a href="#destinations" class="menu__link">Destinations</a></li>
+				<li class="menu__item"><a href="#stories" class="menu__link">Travel Stories</a></li>
 			</ul>
 		</nav>
-		<a href="#" class="header__button">
+		<button class="header__button">
 			Login
-		</a>
+		</button>
 	</header>
 
 	<main class="main">
 
 		<section class="prewiev">
 			<div class="prewiev__container">
-				<h1 class="prewiev__header">
+				<h1 class="prewiev__header" id="how-works">
 					Explore the beauty of the World
 				</h1>
 				<p class="prewiev__text">
@@ -41,14 +41,14 @@
 				</p>
 				<form action="#" class="form" method="post">
 					<input type="search" id="form__search" class="form__search" placeholder="What would you like to do?">
-					<input type="submit" class="form__button" value="Start Planning">
+					<button type="button" class="form__button">Start Planning</button>
 				</form>
 				
 			</div>
 		</section>
 
 		<section class="steps">
-			<h2 class="steps__header">
+			<h2 class="steps__header" id="trip">
 				3 STEPS TO THE PERFECT TRIP
 			</h2>
 			<div class="steps__tips tips">
@@ -80,7 +80,7 @@
 		</section>
 
 		<section class="destinations">
-			<h2 class="destination__header">
+			<h2 class="destination__header" id="destinations">
 				POPULAR DESTINATIONS
 			</h2>
 			<div class="destinations__slider">
@@ -123,89 +123,104 @@
 				<input type="radio" id="usa" name="destination" value="usa" class="radio">
 				<label class="label" for="usa"></label>
 			</form>
-			<a href="#" class="button">
+			<button class="button">
 				Find More
-			</a>
+			</button>
 		</section>
 
 		<section class="stories">
-			<h2 class="stories__header">
+			<h2 class="stories__header" id="stories">
 				TRAVEL STORIES
 			</h2>
-			<div class="stories__all">
-				<div class="storycard">
-					<img 
-						src="img/thailand.jpg" 
-						srcset="
-							img/thailand-2x.jpg 2x,
-							img/thailand-3x.jpg 3x"
-						alt="thailand" 
-						class="storycard__img">
-					<div class="storycard__text">
-						<h3 class="storycard__text--main">
-							10 Photos of Attractive Thailand
-						</h3>
-						<p class="storycard__text--basic">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit... <a href="/">Read More</a> 
-						</p>
+				<div class="stories__all">
+					<div class="storycard">
+						<img 
+							src="img/thailand.jpg" 
+							srcset="
+								img/thailand-2x.jpg 2x,
+								img/thailand-3x.jpg 3x"
+							alt="thailand" 
+							class="storycard__img">
+						<div class="storycard__text">
+							<h3 class="storycard__text--main">
+								10 Photos of Attractive Thailand
+							</h3>
+							<p class="storycard__text--basic">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit... <a href="/">Read More</a> 
+							</p>
+						</div>
+					</div>
+					<div class="storycard">
+						<img 
+							src="img/utah.jpg" 
+							srcset="
+								img/utah-2x.jpg 2x,
+								img/utah-3x.jpg 3x"
+							alt="utah" 
+							class="storycard__img">
+						<div class="storycard__text">
+							<h3 class="storycard__text--main">
+								Canyonlands National Park, Utah
+							</h3>
+							<p class="storycard__text--basic">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit... <a href="/">Read More</a> 
+							</p>
+						</div>
+					</div>
+					<div class="storycard">
+						<img 
+							src="img/mountains.jpg" 
+							srcset="
+								img/mountains-2x.jpg 2x,
+								img/mountains-3x.jpg 3x"
+							alt="mountains" 
+							class="storycard__img">
+						<div class="storycard__text">
+							<h3 class="storycard__text--main">
+								I left my heart in the Mountains!
+							</h3>
+							<p class="storycard__text--basic">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit... <a href="/">Read More</a> 
+							</p>
+						</div>
+					</div>
+					<div class="storycard">
+						<img 
+							src="img/journey.jpg" 
+							srcset="
+								img/journey-2x.jpg 2x,
+								img/journey-3x.jpg 3x"
+							alt="roadtrip" 
+							class="storycard__img">
+						<div class="storycard__text">
+							<h3 class="storycard__text--main">
+								The Longest journey in my life!
+							</h3>
+							<p class="storycard__text--basic">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit... <a href="/">Read More</a> 
+							</p>
+						</div>
 					</div>
 				</div>
-				<div class="storycard">
-					<img 
-						src="img/utah.jpg" 
-						srcset="
-							img/utah-2x.jpg 2x,
-							img/utah-3x.jpg 3x"
-						alt="utah" 
-						class="storycard__img">
-					<div class="storycard__text">
-						<h3 class="storycard__text--main">
-							Canyonlands National Park, Utah
-						</h3>
-						<p class="storycard__text--basic">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit... <a href="/">Read More</a> 
-						</p>
-					</div>
-				</div>
-				<div class="storycard">
-					<img 
-						src="img/mountains.jpg" 
-						srcset="
-							img/mountains-2x.jpg 2x,
-							img/mountains-3x.jpg 3x"
-						alt="mountains" 
-						class="storycard__img">
-					<div class="storycard__text">
-						<h3 class="storycard__text--main">
-							I left my heart in the Mountains!
-						</h3>
-						<p class="storycard__text--basic">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit... <a href="/">Read More</a> 
-						</p>
-					</div>
-				</div>
-				<div class="storycard">
-					<img 
-						src="img/journey.jpg" 
-						srcset="
-							img/journey-2x.jpg 2x,
-							img/journey-3x.jpg 3x"
-						alt="roadtrip" 
-						class="storycard__img">
-					<div class="storycard__text">
-						<h3 class="storycard__text--main">
-							The Longest journey in my life!
-						</h3>
-						<p class="storycard__text--basic">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit... <a href="/">Read More</a> 
-						</p>
-					</div>
-				</div>
-			</div>
-			<button class="button story-button">
-				See More
-			</button>
+				<button class="button story-button">
+					See More
+				</button>
 		</section>
 	</main>
+
+	<footer class="footer">
+		<div class="left">
+			<a href="https://rs.school/js-stage0/"><img class="footer__img" src="ico/rs-school.svg" alt="rs-school logo" height="55"></a>
+		</div>
+		<div class="center">
+			<p class="footer__text">All Rights Reserved © Travel Portal</p>
+		</div>
+		<ul class="right">
+			<li><a href="https://github.com/AleksandrYermolaev"><img class="footer__img" src="ico/inst.svg" alt="instagram" height="33"></a></li>
+			<li><a href="https://github.com/AleksandrYermolaev"><img class="footer__img" src="ico/youtube.svg" alt="youtube" height="28"></a></li>
+			<li><a href="https://github.com/AleksandrYermolaev"><img class="footer__img" src="ico/twit.svg" alt="twitter" height="33"></a></li>
+		</ul>
+	</footer>
+	<script src="index.js"></script>
 </body>
 </html>
