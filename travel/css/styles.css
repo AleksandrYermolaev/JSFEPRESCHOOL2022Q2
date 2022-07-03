@@ -52,7 +52,12 @@ body {
 	max-width: 1440px;
 	margin: 0 auto;
 }
-
+.header--mobile {
+	display: none;
+}
+.burger__menu {
+	display: none;
+}
 .header {
 	width: 100%;
 	height: 90px;
