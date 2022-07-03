@@ -1,0 +1,29 @@
+
+body {
+	max-width: 1440px;
+	margin: 5px;
+	box-sizing: border-box;
+}
+.hider {
+	width: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.container {
+	width: 175%;
+	border: 10px solid #ece89d;
+	display: flex;
+	gap: 4.166%;
+}
+.element {
+
+}
+.img {
+	width: 100%;
+}
+.element {
+}
+.element2 {
+}
