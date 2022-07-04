@@ -74,7 +74,7 @@
 					<div class="image-container">
 						<img class="tips__icon" src="ico/bike.svg" alt="bike" width="50" height="45">
 					</div>
-					<span class="tips__text">
+					<span class="tips__text bike">
 						Tell us what you want to do
 					</span>
 				</div>
@@ -82,7 +82,7 @@
 					<div class="image-container">
 						<img class="tips__icon" src="ico/calendar.svg" alt="calendar" width="52" height="52">
 					</div>
-					<span class="tips__text">
+					<span class="tips__text calendar">
 						Share us preferable dates 
 					</span>
 				</div>
@@ -90,7 +90,7 @@
 					<div class="image-container">
 						<img class="tips__icon" src="ico/plane.svg" alt="plane" width="60" height="45">
 					</div>
-					<span class="tips__text">
+					<span class="tips__text plane">
 						We will give you recommendations
 					</span>
 				</div>
@@ -104,37 +104,31 @@
 			<div class="slider-hider">
 				<div class="destinations__slider">
 					<div class="slider__spain slider">
-						<img 
-							src="img/slider-1.jpg" 
-							srcset="
-								img/slider-1-2x.jpg 2x,
-								img/slider-1-3x.jpg 3x"
-							alt="spain" 
-							class="slider__image">
+						<picture class="mobile-image">
+							<source media="(min-width: 768px)" srcset="img/slider-1.jpg">
+							<img src="img/slider-1-mobile.jpg" alt="spain" class="slider__image">
+						</picture>
 						<span class="slider__text">SPAIN</span>
 					</div>
 					<div class="slider__japan slider">
-						<img 
-							src="img/slider-2.jpg" 
-							srcset="
-								img/slider-2-2x.jpg 2x,
-								img/slider-2-3x.jpg 3x"
-							alt="japan" 
-							class="slider__image">
+						<picture>
+							<source media="(min-width: 768px)" srcset="img/slider-2.jpg">
+							<img src="img/slider-2-mobile.jpg" alt="japan" class="slider__image">
+						</picture>
 						<span class="slider__text">JAPAN</span>
 					</div>
 					<div class="slider__usa slider">
-						<img 
-							src="img/slider-3.jpg" 
-							srcset="
-								img/slider-3-2x.jpg 2x,
-								img/slider-3-3x.jpg 3x"
-							alt="usa" 
-							class="slider__image">
+						<picture>
+							<source media="(min-width: 768px)" srcset="img/slider-3.jpg">
+							<img src="img/slider-3-mobile.jpg" alt="usa" class="slider__image">
+						</picture>
 						<span class="slider__text">USA</span>
 					</div>
 				</div>
 			</div>
+
+
+
 			<form action="#" class="slider__radio" method="post">
 				<input type="radio" id="spain" name="destination" value="spain" class="radio">
 				<label class="label" for="spain"></label>
