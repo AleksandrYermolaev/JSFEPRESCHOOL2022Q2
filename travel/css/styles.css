@@ -52,10 +52,10 @@ body {
 	max-width: 1440px;
 	margin: 0 auto;
 }
-.header--mobile {
-	display: none;
-}
-.burger__menu {
+.header--mobile,
+.burger__menu,
+.slider-leftbar,
+.slider-rightbar {
 	display: none;
 }
 .header {

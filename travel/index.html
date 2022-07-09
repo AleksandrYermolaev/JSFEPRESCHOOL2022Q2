@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="css/styles.css">
 	<link rel="stylesheet" href="css/slyles-tablet.css">
 	<link rel="stylesheet" href="css/styles-mobile.css">
+	<link rel="stylesheet" href="css/styles-mobile-large.css">
 	<title>Travel portal</title>
 
 </head>
@@ -124,6 +125,12 @@
 						</picture>
 						<span class="slider__text">USA</span>
 					</div>
+					<div class="slider-leftbar">
+						<img src="/ico/slider-arrow-left.svg" alt="previous" class="slider-arrow">
+					</div>
+					<div class="slider-rightbar">
+						<img src="/ico/slider-arrow.svg" alt="next" class="slider-arrow">
+					</div>
 				</div>
 			</div>
 
@@ -148,13 +155,10 @@
 			</h2>
 				<div class="stories__all">
 					<div class="storycard">
-						<img 
-							src="img/thailand.jpg" 
-							srcset="
-								img/thailand-2x.jpg 2x,
-								img/thailand-3x.jpg 3x"
-							alt="thailand" 
-							class="storycard__img">
+						<picture class="storycard__img--mobile">
+							<source media="(min-width: 768px)" srcset="img/thailand.jpg">
+							<img src="img/thailand-mobile.jpg" alt="thailand" class="storycard__img">
+						</picture>
 						<div class="storycard__text">
 							<h3 class="storycard__text--main">
 								10 Photos of Attractive Thailand
@@ -166,13 +170,10 @@
 						</div>
 					</div>
 					<div class="storycard">
-						<img 
-							src="img/utah.jpg" 
-							srcset="
-								img/utah-2x.jpg 2x,
-								img/utah-3x.jpg 3x"
-							alt="utah" 
-							class="storycard__img">
+						<picture class="storycard__img--mobile">
+							<source media="(min-width: 768px)" srcset="img/utah.jpg">
+							<img src="img/utah-mobile.jpg" alt="utah" class="storycard__img">
+						</picture>
 						<div class="storycard__text">
 							<h3 class="storycard__text--main">
 								Canyonlands National Park, Utah
@@ -184,13 +185,10 @@
 						</div>
 					</div>
 					<div class="storycard">
-						<img 
-							src="img/mountains.jpg" 
-							srcset="
-								img/mountains-2x.jpg 2x,
-								img/mountains-3x.jpg 3x"
-							alt="mountains" 
-							class="storycard__img">
+						<picture class="storycard__img--mobile">
+							<source media="(min-width: 768px)" srcset="img/mountains.jpg">
+							<img src="img/mountains-mobile.jpg" alt="mountains" class="storycard__img">
+						</picture>
 						<div class="storycard__text">
 							<h3 class="storycard__text--main">
 								I left my heart in the Mountains!
@@ -202,13 +200,10 @@
 						</div>
 					</div>
 					<div class="storycard">
-						<img 
-							src="img/journey.jpg" 
-							srcset="
-								img/journey-2x.jpg 2x,
-								img/journey-3x.jpg 3x"
-							alt="roadtrip" 
-							class="storycard__img">
+						<picture class="storycard__img--mobile">
+							<source media="(min-width: 768px)" srcset="img/journey.jpg">
+							<img src="img/journey-mobile.jpg" alt="roadtrip" class="storycard__img">
+						</picture>
 						<div class="storycard__text">
 							<h3 class="storycard__text--main">
 								The Longest journey in my life!
