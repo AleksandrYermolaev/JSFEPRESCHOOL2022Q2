@@ -7,11 +7,31 @@
 	<link rel="icon" href="ico/favicon.svg" type="image/svg">
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/slyles-tablet.css">
+	<link rel="stylesheet" href="css/styles-mobile.css">
+	<link rel="stylesheet" href="css/styles-mobile-large.css">
 	<title>Travel portal</title>
 
 </head>
 <body>
+<div class="body-filter"></div>
 
+	<header class="header--mobile">
+		<div class="status-bar"></div>
+		<div class="icon"></div>
+		<div class="burger__icon"></div>
+		
+	</header>
+	<nav class="burger__menu">
+		<ul class="burger__list">
+			<li class="burger__item"><a data-goto=".form" href="#" class="burger__link">How It Works</a></li>
+			<li class="burger__item"><a data-goto=".steps__header" href="#" class="burger__link">Plan Your Trip</a></li>
+			<li class="burger__item"><a data-goto=".destination__header" href="#" class="burger__link">Destinations</a></li>
+			<li class="burger__item"><a data-goto=".stories__header" href="#" class="burger__link">Travel Stories</a></li>
+			<li class="burger__item"><a href="#" class="burger__link">Account</a></li>
+			<li class="burger__item"><a data-goto=".footer" href="#" class="burger__link">Social Media</a></li>
+		</ul>
+	</nav>
 	<header class="header">
 		<p class="header__title">
 			Travel Portal
@@ -56,7 +76,7 @@
 					<div class="image-container">
 						<img class="tips__icon" src="ico/bike.svg" alt="bike" width="50" height="45">
 					</div>
-					<span class="tips__text">
+					<span class="tips__text bike">
 						Tell us what you want to do
 					</span>
 				</div>
@@ -64,7 +84,7 @@
 					<div class="image-container">
 						<img class="tips__icon" src="ico/calendar.svg" alt="calendar" width="52" height="52">
 					</div>
-					<span class="tips__text">
+					<span class="tips__text calendar">
 						Share us preferable dates 
 					</span>
 				</div>
@@ -72,7 +92,7 @@
 					<div class="image-container">
 						<img class="tips__icon" src="ico/plane.svg" alt="plane" width="60" height="45">
 					</div>
-					<span class="tips__text">
+					<span class="tips__text plane">
 						We will give you recommendations
 					</span>
 				</div>
@@ -83,38 +103,40 @@
 			<h2 class="destination__header" id="destinations">
 				POPULAR DESTINATIONS
 			</h2>
-			<div class="destinations__slider">
-				<div class="slider__spain slider">
-					<img 
-						src="img/slider-1.jpg" 
-						srcset="
-							img/slider-1-2x.jpg 2x,
-							img/slider-1-3x.jpg 3x"
-						alt="spain" 
-						class="slider__image">
-					<span class="slider__text">SPAIN</span>
-				</div>
-				<div class="slider__japan slider">
-					<img 
-						src="img/slider-2.jpg" 
-						srcset="
-							img/slider-2-2x.jpg 2x,
-							img/slider-2-3x.jpg 3x"
-						alt="japan" 
-						class="slider__image">
-					<span class="slider__text">JAPAN</span>
-				</div>
-				<div class="slider__usa slider">
-					<img 
-						src="img/slider-3.jpg" 
-						srcset="
-							img/slider-3-2x.jpg 2x,
-							img/slider-3-3x.jpg 3x"
-						alt="usa" 
-						class="slider__image">
-					<span class="slider__text">USA</span>
+			<div class="slider-hider">
+				<div class="destinations__slider">
+					<div class="slider__spain slider">
+						<picture class="mobile-image">
+							<source media="(min-width: 768px)" srcset="img/slider-1.jpg">
+							<img src="img/slider-1-mobile.jpg" alt="spain" class="slider__image">
+						</picture>
+						<span class="slider__text">SPAIN</span>
+					</div>
+					<div class="slider__japan slider">
+						<picture>
+							<source media="(min-width: 768px)" srcset="img/slider-2.jpg">
+							<img src="img/slider-2-mobile.jpg" alt="japan" class="slider__image">
+						</picture>
+						<span class="slider__text">JAPAN</span>
+					</div>
+					<div class="slider__usa slider">
+						<picture>
+							<source media="(min-width: 768px)" srcset="img/slider-3.jpg">
+							<img src="img/slider-3-mobile.jpg" alt="usa" class="slider__image">
+						</picture>
+						<span class="slider__text">USA</span>
+					</div>
+					<div class="slider-leftbar">
+						<img src="ico/slider-arrow-left.svg" alt="previous" class="slider-arrow">
+					</div>
+					<div class="slider-rightbar">
+						<img src="ico/slider-arrow.svg" alt="next" class="slider-arrow">
+					</div>
 				</div>
 			</div>
+
+
+
 			<form action="#" class="slider__radio" method="post">
 				<input type="radio" id="spain" name="destination" value="spain" class="radio">
 				<label class="label" for="spain"></label>
@@ -134,71 +156,63 @@
 			</h2>
 				<div class="stories__all">
 					<div class="storycard">
-						<img 
-							src="img/thailand.jpg" 
-							srcset="
-								img/thailand-2x.jpg 2x,
-								img/thailand-3x.jpg 3x"
-							alt="thailand" 
-							class="storycard__img">
+						<picture class="storycard__img--mobile">
+							<source media="(min-width: 768px)" srcset="img/thailand.jpg">
+							<img src="img/thailand-mobile.jpg" alt="thailand" class="storycard__img">
+						</picture>
 						<div class="storycard__text">
 							<h3 class="storycard__text--main">
 								10 Photos of Attractive Thailand
 							</h3>
 							<p class="storycard__text--basic">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit... <a href="https://aleksandryermolaev.github.io/JSFEPRESCHOOL2022Q2/travel/">Read More</a> 
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit...  
 							</p>
+							<a href="https://aleksandryermolaev.github.io/JSFEPRESCHOOL2022Q2/travel/">Read More</a>
 						</div>
 					</div>
 					<div class="storycard">
-						<img 
-							src="img/utah.jpg" 
-							srcset="
-								img/utah-2x.jpg 2x,
-								img/utah-3x.jpg 3x"
-							alt="utah" 
-							class="storycard__img">
+						<picture class="storycard__img--mobile">
+							<source media="(min-width: 768px)" srcset="img/utah.jpg">
+							<img src="img/utah-mobile.jpg" alt="utah" class="storycard__img">
+						</picture>
 						<div class="storycard__text">
 							<h3 class="storycard__text--main">
 								Canyonlands National Park, Utah
 							</h3>
 							<p class="storycard__text--basic">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit... <a href="https://aleksandryermolaev.github.io/JSFEPRESCHOOL2022Q2/travel/">Read More</a> 
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit...  
 							</p>
+							<a href="https://aleksandryermolaev.github.io/JSFEPRESCHOOL2022Q2/travel/">Read More</a>
 						</div>
 					</div>
 					<div class="storycard">
-						<img 
-							src="img/mountains.jpg" 
-							srcset="
-								img/mountains-2x.jpg 2x,
-								img/mountains-3x.jpg 3x"
-							alt="mountains" 
-							class="storycard__img">
+						<picture class="storycard__img--mobile">
+							<source media="(min-width: 768px)" srcset="img/mountains.jpg">
+							<img src="img/mountains-mobile.jpg" alt="mountains" class="storycard__img">
+						</picture>
 						<div class="storycard__text">
 							<h3 class="storycard__text--main">
 								I left my heart in the Mountains!
 							</h3>
 							<p class="storycard__text--basic">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit... <a href="https://aleksandryermolaev.github.io/JSFEPRESCHOOL2022Q2/travel/">Read More</a> 
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit...  
 							</p>
+							<a href="https://aleksandryermolaev.github.io/JSFEPRESCHOOL2022Q2/travel/">Read More</a>
 						</div>
 					</div>
 					<div class="storycard">
-						<img 
-							src="img/journey.jpg" 
-							srcset="
-								img/journey-2x.jpg 2x,
-								img/journey-3x.jpg 3x"
-							alt="roadtrip" 
-							class="storycard__img">
+						<picture class="storycard__img--mobile">
+							<source media="(min-width: 768px)" srcset="img/journey.jpg">
+							<img src="img/journey-mobile.jpg" alt="roadtrip" class="storycard__img">
+						</picture>
 						<div class="storycard__text">
 							<h3 class="storycard__text--main">
 								The Longest journey in my life!
 							</h3>
 							<p class="storycard__text--basic">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit... <a href="https://aleksandryermolaev.github.io/JSFEPRESCHOOL2022Q2/travel/">Read More</a> 
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit...  
 							</p>
+							<a href="https://aleksandryermolaev.github.io/JSFEPRESCHOOL2022Q2/travel/">Read More</a>
 						</div>
 					</div>
 				</div>
