@@ -1,0 +1,132 @@
+@media (min-width: 768px) and (max-width: 1055px) {
+	body {
+		max-width: 100%;
+	}
+	.header {
+		width: 100%;
+		height: 80px;
+		justify-content: center;
+		padding: 0 10px;
+	}
+	.header__title {
+		font-size: 24px;
+		position: static;
+		flex: 0 1 15%;
+	}
+	.header__title::before {
+		content: '';
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		background: no-repeat 0 /20px 20px url(../ico/favicon.svg);
+	}
+	.header__menu {
+		position: static;
+		flex: 0 1 60%;
+	}
+	.header__list {
+		align-items: center;
+		gap: 5%;
+		text-align: center;
+	}
+	.prewiev {
+		height: 500px;
+		transform: translateY(-80px);
+	}
+	.prewiev__container {
+		top: 122px;
+		left: 60px;
+		width: 80%;
+	}
+	.prewiev__header {
+		font-size: 60px;
+		line-height: 80px;
+		color: #FFFFFF;
+	}
+	.prewiev__text {
+		font-size: 18px;
+		line-height: 20px;
+		font-weight: normal;
+		color: #FFFFFF;
+		margin: 3% 0px 4% 0px;
+	}
+	.form {
+		height: 20%;
+	}
+	.form__button {
+		flex: 0 1 25%;
+		height: 55%;
+		font-size: 20px;
+	}
+	.steps {
+		width: 81.74%;
+		margin: 0 auto;
+		position: static;
+	}
+	.steps__header {
+		font-size: 30px;
+		line-height: 43px;
+	}
+	.steps__tips {
+		margin: 30px 0px 0px 0px;
+		height: 100%;
+		justify-content: center;
+		gap: 30px;	
+		column-gap: 80px;
+	}
+	.tips__content {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+	.destinations {
+		top: 5em;
+	}
+	.destination__header {
+		font-size: 30px;
+		line-height: 43px;
+	}
+	.slider__text {
+		bottom: 20px;
+	}
+	.button {
+		top: 2em;
+	}
+	.stories {
+		height: 1100px;
+		margin: 14em auto 0;
+		background-position: 0px 50px;
+	}
+	.stories__header {
+		font-size: 30px;
+		line-height: 43px;
+	}
+	.stories__all {
+		margin-top: 3em;
+	}
+	.storycard {
+		display: flex;
+		gap: 3.33%;
+	}
+	.storycard__img {
+		flex: 0 1 33.333%;
+		max-height: 200px;
+		border-radius: 16px;
+		box-shadow: 0px 4px 4px #0D606F;
+	}
+	.storycard__text {
+		flex: 0 1 66.666%;
+		max-height: 200px;
+	}
+	.storycard__text--main {
+		font-size: 25px;
+		line-height: 35px;
+	}
+	.storycard__text--basic {
+		font-size: 18px;
+		line-height: 20px;
+	}
+	.story-button {
+		transform: translateY(-42%);
+	}	
+}
