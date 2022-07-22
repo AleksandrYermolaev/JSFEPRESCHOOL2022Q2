@@ -99,12 +99,11 @@ changePopupToLogin.addEventListener('click', () => {
 });
 
 // Вывод даннх из полей E-mail и Password в браузерный alert
-const emailData = document.querySelector('.email');
-const passData = document.querySelector('.pass')
-const submitButton = document.querySelector('.submit.login');
-console.log(emailData);
-console.log(emailData.value);
-submitButton.addEventListener('click', (emailData, passData) => {
-	const emailText = emailData.value;
-	alert(emailText);
-})
+const submitButtons = document.querySelectorAll('.submit');
+for (let submitButton of submitButtons) {
+	submitButton.addEventListener('click', () => {
+		const emailData = document.querySelector('.email').value;
+		const passData = document.querySelector('.pass').value;
+		alert('Your E-mail: ' + emailData + '\n' + 'Your password: ' + passData);
+	});
+}

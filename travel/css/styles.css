@@ -520,7 +520,18 @@ body._lock {
 	box-shadow: 0px 0px 3px rgba(13, 96, 111, 0.08), 0px 2px 3px rgba(13, 96, 111, 0.16);
 	border-radius: 10px;
 	margin: 2.1vw 0px 0px 0px;
+	transition: all 0.5s ease;
 }
+.popup__login-facebook:hover,
+.popup__login-facebook:active {
+	background: #0d438a;
+}
+.popup__login-google:hover,
+.popup__login-google:active {
+	background: #0D606F;
+	color: #ffffff;
+}
+
 .popup__login-facebook::before,
 .popup__login-google::before {
 	display: inline-block;
@@ -584,7 +595,16 @@ body._lock {
 	height: 3.75vw;
 	margin: 0px 0px 1.3888vw 0px;
 	padding: 3px 10px;
-	font-size: 1.8vw;
+	font-family: Aleo, sans-serif;
+	font-size: 1.5vw;
+	transition: all 0.5s ease;
+}
+.signin__field:hover,
+.signin__field:focus {
+	box-shadow: 0px 0px 10px #04323a;
+}
+.signin__field:focus {
+	border: 1px solid #04323a;
 }
 .popup__signin :nth-child(4) {
 	margin: 0px 0px 2.1vw 0px;
@@ -601,6 +621,11 @@ body._lock {
 	font-size: 1.3888vw;
 	line-height: 3.8889vw;
 	margin: 0px 0px 0.6944vw 0px;
+	transition: all 0.5s ease;
+}
+.submit:hover,
+.submit:active {
+	background: #04323a;
 }
 .popup__link {
 	font-family: Aleo, sans-serif;
@@ -628,4 +653,3 @@ body._lock {
 .popup__switch {
 	display: none;
 }
-
