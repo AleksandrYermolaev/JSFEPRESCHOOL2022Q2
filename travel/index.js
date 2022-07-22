@@ -51,3 +51,60 @@ if (burgerBodyClose) {
 		body.classList.toggle('_active');
 	});
 }
+
+//Появление Log In popup
+
+const popup = document.querySelector('.popup');
+const popupBody = document.querySelector('.popup__body');
+const popupOpenLinks = document.querySelectorAll('.popup__open-link');	
+	if (popupOpenLinks) {
+		for (let openLink of popupOpenLinks) {
+			openLink.addEventListener('click', () => {
+				document.body.classList.toggle('_lock');
+				popup.classList.toggle('visible');
+				popupBody.classList.toggle('visible');
+			});
+		}
+
+	}
+//Скрытие popup
+popup.addEventListener('click', (event) => {
+	if (event.target.classList.contains('popup')) {
+		document.body.classList.toggle('_lock');
+		popup.classList.toggle('visible');
+		popupBody.classList.toggle('visible');
+	}
+});
+
+//Смена Log in popup на Sign In popup
+const loginFields = document.querySelectorAll('.login');
+const signupFields = document.querySelectorAll('.signup');
+const changePopupToSignin = document.querySelector('.register__link');
+const changePopupToLogin = document.querySelector('.login__link');
+changePopupToSignin.addEventListener('click', () => {
+	for (let logField of loginFields) {
+		logField.classList.toggle('popup__switch');
+	}
+	for (let signField of signupFields) {
+		signField.classList.toggle('popup__switch');
+	}
+});
+changePopupToLogin.addEventListener('click', () => {
+	for (let logField of loginFields) {
+		logField.classList.toggle('popup__switch');
+	}
+	for (let signField of signupFields) {
+		signField.classList.toggle('popup__switch');
+	}
+});
+
+// Вывод даннх из полей E-mail и Password в браузерный alert
+const emailData = document.querySelector('.email');
+const passData = document.querySelector('.pass')
+const submitButton = document.querySelector('.submit.login');
+console.log(emailData);
+console.log(emailData.value);
+submitButton.addEventListener('click', (emailData, passData) => {
+	const emailText = emailData.value;
+	alert(emailText);
+})

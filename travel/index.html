@@ -28,7 +28,7 @@
 			<li class="burger__item"><a data-goto=".steps__header" href="#" class="burger__link">Plan Your Trip</a></li>
 			<li class="burger__item"><a data-goto=".destination__header" href="#" class="burger__link">Destinations</a></li>
 			<li class="burger__item"><a data-goto=".stories__header" href="#" class="burger__link">Travel Stories</a></li>
-			<li class="burger__item"><a href="#" class="burger__link">Account</a></li>
+			<li class="burger__item"><a href="#" class="burger__link popup__open-link">Account</a></li>
 			<li class="burger__item"><a data-goto=".footer" href="#" class="burger__link">Social Media</a></li>
 		</ul>
 	</nav>
@@ -44,7 +44,7 @@
 				<li class="menu__item"><a href="#stories" class="menu__link">Travel Stories</a></li>
 			</ul>
 		</nav>
-		<button class="header__button">
+		<button class="header__button popup__open-link">
 			Login
 		</button>
 	</header>
@@ -238,32 +238,37 @@
 	<div class="popup">
 		<div class="popup__body">
 			<div class="popup__content">
-				<div class="popup__header">Log in to your account</div>
-				<div class="popup__login-facebook">
+				<div class="popup__header login">Log in to your account</div>
+				<div class="popup__header signup popup__switch">Create account</div>
+				<div class="popup__login-facebook login">
 					Sign In with Facebook
 				</div>
-				<div class="popup__login-google">
+				<div class="popup__login-google login">
 					Sign In with Google
 				</div>
-				<div class="popup__divide">
+				<div class="popup__divide login">
 					<div class="divide__line"></div>
 					<span class="divide__text">or</span>
 					<div class="divide__line"></div>
 				</div>
 				<form action="#" class="popup__signin">
 					<span class="signin__text">E-mail</span>
-					<input type="text" class="signin__field">
+					<input type="email" class="signin__field email" required>
 					<span class="signin__text">Password</span>
-					<input type="text" class="signin__field">
-					<input type="submit" class="submit" value="Sign In">
+					<input type="password" class="signin__field pass" required minlength="4">
+					<input type="submit" class="submit login" value="Sign In">
+					<input type="submit" class="submit signup popup__switch" value="Sign Up">
 				</form>
-				<a href="#" class="forgot__pass popup__link">Forgot Your Password?</a>
+				<a href="#" class="forgot__pass popup__link login">Forgot Your Password?</a>
 				<div class="popup__divide2">
-
 				</div>
-				<div class="popup__register">
+				<div class="popup__register login">
 					<span class="register__text">Don’t have an account?</span>
 					<a href="#" class="register__link popup__link">Register</a>
+				</div>
+				<div class="popup__register signup popup__switch">
+					<span class="register__text">Already have an account?</span>
+					<a href="#" class="login__link popup__link">Log In</a>
 				</div>
 			</div>
 		</div>
