@@ -107,3 +107,43 @@ for (let submitButton of submitButtons) {
 		alert('Your E-mail: ' + emailData + '\n' + 'Your password: ' + passData);
 	});
 }
+
+// Слайдер
+const slider = document.querySelector('.destinations__slider');
+console.log(slider);
+slider.addEventListener('click', (event) => {
+	if (event.target.classList.contains('spain')) {
+		slider.style = 'transform: translateX(12.69%)';
+	}
+	if (event.target.classList.contains('japan')) {
+		slider.style = 'transform: translateX(-21.42%)';
+	}
+	if (event.target.classList.contains('usa')) {
+		console.log('hello');
+		slider.style = 'transform: translateX(-55.556%)';
+	}
+});
+//const sliderImages = document.querySelectorAll('.mobile-image');
+// let sliderSources = [];
+// for (let i = 0; i < sliderImages.length; i++) {
+// 		sliderSources[i] = sliderImages[i].children[0].srcset;
+// 		sliderImages[i].remove();
+// }
+// let step = 0;
+// let offset = 0;
+
+// function draw() {
+// 	const sliderItems = document.querySelectorAll('.slider');
+// 	sliderItems.forEach(item => {
+// 		let img = document.createElement('img');
+// 		img.src = sliderSources[step];
+// 		img.classList.add('slider__image');
+// 		item.appendChild(img);
+// 		step += 1;
+// 		if (step === 3) step = 0;
+// 	});
+// }
+// draw();
+//  function next() {
+// 	step === 3 ? step = 0 : step += 1;
+//  }
