@@ -259,7 +259,7 @@ body._lock {
 	flex-direction: column;
 	overflow: hidden;
 	transition: all 1s ease;
-	/* align-items: center; */
+	align-items: center;
 }
 .destinations__slider {
 	width: 175%;
@@ -269,7 +269,6 @@ body._lock {
 	align-items: center;
 	position: relative;
 	transition: transform 1s ease;
-	transform: translateX(-21.42%);
 }
 
 .slider {

@@ -108,42 +108,94 @@ for (let submitButton of submitButtons) {
 	});
 }
 
-// Слайдер
-const slider = document.querySelector('.destinations__slider');
-console.log(slider);
-slider.addEventListener('click', (event) => {
-	if (event.target.classList.contains('spain')) {
-		slider.style = 'transform: translateX(12.69%)';
-	}
-	if (event.target.classList.contains('japan')) {
-		slider.style = 'transform: translateX(-21.42%)';
-	}
-	if (event.target.classList.contains('usa')) {
-		console.log('hello');
-		slider.style = 'transform: translateX(-55.556%)';
-	}
-});
-//const sliderImages = document.querySelectorAll('.mobile-image');
-// let sliderSources = [];
-// for (let i = 0; i < sliderImages.length; i++) {
-// 		sliderSources[i] = sliderImages[i].children[0].srcset;
-// 		sliderImages[i].remove();
-// }
-// let step = 0;
-// let offset = 0;
+// Слайдер для десктопной версии
+function slider() {
+if (document.documentElement.clientWidth > 767) {
+	const slider = document.querySelector('.destinations__slider');
+	const radioButton = document.querySelectorAll('.radio');
+	slider.addEventListener('click', (event) => {
+		if (event.target.classList.contains('spain')) {
+			slider.style = 'transform: translateX(33.5%)';
+			radioButton[0].checked = true;
+		}
+		if (event.target.classList.contains('japan')) {
+			slider.style = 'transform: translateX(0%)';
+			radioButton[1].checked = true;
+		}
+		if (event.target.classList.contains('usa')) {
+			slider.style = 'transform: translateX(-33.5%)';
+			radioButton[2].checked = true;
+		}
+	});
+	radioButton[0].addEventListener('click', () => {
+			slider.style = 'transform: translateX(33.5%)';
+	});
+	radioButton[1].addEventListener('click', () => {
+		slider.style = 'transform: translateX(0%)';
+	});
+	radioButton[2].addEventListener('click', () => {
+		slider.style = 'transform: translateX(-33.5%)';
+	});
+}
 
-// function draw() {
-// 	const sliderItems = document.querySelectorAll('.slider');
-// 	sliderItems.forEach(item => {
-// 		let img = document.createElement('img');
-// 		img.src = sliderSources[step];
-// 		img.classList.add('slider__image');
-// 		item.appendChild(img);
-// 		step += 1;
-// 		if (step === 3) step = 0;
-// 	});
-// }
-// draw();
-//  function next() {
-// 	step === 3 ? step = 0 : step += 1;
-//  }
+// Слайдер для мобильной версии
+if (document.documentElement.clientWidth < 768) {
+	const slider = document.querySelector('.destinations__slider');
+	const radioButton = document.querySelectorAll('.radio');
+	const nextSlide = document.querySelector('.slider-rightbar');
+	const prevSlide = document.querySelector('.slider-leftbar');
+	let count = 1;
+	nextSlide.addEventListener('click', () => {
+		if (count === 1) {
+			slider.style.transform = 'translateX(-100%)';
+			radioButton[count + 1].checked = true;
+			nextSlide.style = 'opacity: 0.2';
+			prevSlide.style = 'opacity: 1';
+			count += 1;
+		}
+		if (count === 0) {
+			slider.style.transform = 'translateX(0%)';
+			radioButton[count + 1].checked = true;
+			nextSlide.style = 'opacity: 1';
+			prevSlide.style = 'opacity: 1';
+			count += 1;
+		}
+	});
+	prevSlide.addEventListener('click', () => {
+		if (count === 1) {
+			slider.style.transform = 'translateX(100%)';
+			radioButton[count - 1].checked = true;
+			prevSlide.style = 'opacity: 0.2';
+			nextSlide.style = 'opacity: 1';
+			count -= 1;
+		}
+		if (count === 2) {
+			slider.style.transform = 'translateX(0%)';
+			radioButton[count - 1].checked = true;
+			prevSlide.style = 'opacity: 1';
+			nextSlide.style = 'opacity: 1';
+			count -= 1;
+		}
+	});
+	radioButton[0].addEventListener('click', () => {
+		slider.style = 'transform: translateX(100%)';
+		prevSlide.style = 'opacity: 0.2';
+		nextSlide.style = 'opacity: 1';
+		count = 0;
+	});
+	radioButton[1].addEventListener('click', () => {
+		slider.style = 'transform: translateX(0%)';
+		prevSlide.style = 'opacity: 1';
+		nextSlide.style = 'opacity: 1';
+		count = 1;
+	});
+	radioButton[2].addEventListener('click', () => {
+		slider.style = 'transform: translateX(-100%)';
+		nextSlide.style = 'opacity: 0.2';
+		prevSlide.style = 'opacity: 1';
+		count = 2;
+	});
+}
+}
+slider();
+window.addEventListener('resize', slider);

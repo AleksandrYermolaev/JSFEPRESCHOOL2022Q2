@@ -188,12 +188,31 @@
 		flex-direction: row;
 		overflow: hidden;
 	}
+	.slider-leftbar,
+	.slider-rightbar {
+		display: flex;
+		width: 10%;
+		height: 75%;
+		position: absolute;
+		z-index: 2;
+		align-items: center;
+		justify-content: center;
+		top: 14%;
+		transition: opacity	1s ease;
+	}
+	.slider-rightbar {
+		right: 0%;
+	}
+	.slider-leftbar {
+		left: 0%;
+	}
 	.destinations__slider {
 		width: 300%;
 		margin-top: 6.2%;
 		display: flex;
 		gap: 0;
 		align-items: center;
+		justify-content: center;
 	}
 	.slider {
 		position: relative;
@@ -220,18 +239,6 @@
 	.label {
 		width: 8px;
 		height: 8px;
-	}
-	.slider-leftbar,
-	.slider-rightbar {
-		display: flex;
-		width: 37px;
-		height: 210px;
-		position: absolute;
-		align-items: center;
-		justify-content: center;
-	}
-	.slider-rightbar {
-		right: 0;
 	}
 	.button {
 		display: block;
