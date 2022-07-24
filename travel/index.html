@@ -28,7 +28,7 @@
 			<li class="burger__item"><a data-goto=".steps__header" href="#" class="burger__link">Plan Your Trip</a></li>
 			<li class="burger__item"><a data-goto=".destination__header" href="#" class="burger__link">Destinations</a></li>
 			<li class="burger__item"><a data-goto=".stories__header" href="#" class="burger__link">Travel Stories</a></li>
-			<li class="burger__item"><a href="#" class="burger__link">Account</a></li>
+			<li class="burger__item"><a href="#" class="burger__link popup__open-link">Account</a></li>
 			<li class="burger__item"><a data-goto=".footer" href="#" class="burger__link">Social Media</a></li>
 		</ul>
 	</nav>
@@ -44,7 +44,7 @@
 				<li class="menu__item"><a href="#stories" class="menu__link">Travel Stories</a></li>
 			</ul>
 		</nav>
-		<button class="header__button">
+		<button class="header__button popup__open-link">
 			Login
 		</button>
 	</header>
@@ -104,34 +104,38 @@
 				POPULAR DESTINATIONS
 			</h2>
 			<div class="slider-hider">
+				
+				<div class="slider-leftbar">
+					<img src="ico/slider-arrow-left.svg" alt="previous" class="slider-arrow">
+				</div>
+				<div class="slider-rightbar">
+					<img src="ico/slider-arrow.svg" alt="next" class="slider-arrow">
+				</div>
+
 				<div class="destinations__slider">
+										
 					<div class="slider__spain slider">
 						<picture class="mobile-image">
 							<source media="(min-width: 768px)" srcset="img/slider-1.jpg">
-							<img src="img/slider-1-mobile.jpg" alt="spain" class="slider__image">
+							<img src="img/slider-1-mobile.jpg" alt="spain" class="slider__image spain">
 						</picture>
 						<span class="slider__text">SPAIN</span>
 					</div>
 					<div class="slider__japan slider">
-						<picture>
+						<picture class="mobile-image">
 							<source media="(min-width: 768px)" srcset="img/slider-2.jpg">
-							<img src="img/slider-2-mobile.jpg" alt="japan" class="slider__image">
+							<img src="img/slider-2-mobile.jpg" alt="japan" class="slider__image japan">
 						</picture>
 						<span class="slider__text">JAPAN</span>
 					</div>
 					<div class="slider__usa slider">
-						<picture>
+						<picture class="mobile-image">
 							<source media="(min-width: 768px)" srcset="img/slider-3.jpg">
-							<img src="img/slider-3-mobile.jpg" alt="usa" class="slider__image">
+							<img src="img/slider-3-mobile.jpg" alt="usa" class="slider__image usa">
 						</picture>
 						<span class="slider__text">USA</span>
 					</div>
-					<div class="slider-leftbar">
-						<img src="ico/slider-arrow-left.svg" alt="previous" class="slider-arrow">
-					</div>
-					<div class="slider-rightbar">
-						<img src="ico/slider-arrow.svg" alt="next" class="slider-arrow">
-					</div>
+					
 				</div>
 			</div>
 
@@ -145,7 +149,7 @@
 				<input type="radio" id="usa" name="destination" value="usa" class="radio">
 				<label class="label" for="usa"></label>
 			</form>
-			<button class="button">
+			<button class="button click">
 				Find More
 			</button>
 		</section>
@@ -235,6 +239,44 @@
 			<li><a href="https://github.com/AleksandrYermolaev"><img class="footer__img" src="ico/twit.svg" alt="twitter" height="33"></a></li>
 		</ul>
 	</footer>
+	<div class="popup">
+		<div class="popup__body">
+			<div class="popup__content">
+				<div class="popup__header login">Log in to your account</div>
+				<div class="popup__header signup popup__switch">Create account</div>
+				<div class="popup__login-facebook login">
+					Sign In with Facebook
+				</div>
+				<div class="popup__login-google login">
+					Sign In with Google
+				</div>
+				<div class="popup__divide login">
+					<div class="divide__line"></div>
+					<span class="divide__text">or</span>
+					<div class="divide__line"></div>
+				</div>
+				<form action="#" class="popup__signin">
+					<span class="signin__text">E-mail</span>
+					<input type="email" class="signin__field email" required>
+					<span class="signin__text">Password</span>
+					<input type="password" class="signin__field pass" required minlength="4">
+					<input type="submit" class="submit login" value="Sign In">
+					<input type="submit" class="submit signup popup__switch" value="Sign Up">
+				</form>
+				<a href="#" class="forgot__pass popup__link login">Forgot Your Password?</a>
+				<div class="popup__divide2">
+				</div>
+				<div class="popup__register login">
+					<span class="register__text">Don’t have an account?</span>
+					<a href="#" class="register__link popup__link">Register</a>
+				</div>
+				<div class="popup__register signup popup__switch">
+					<span class="register__text">Already have an account?</span>
+					<a href="#" class="login__link popup__link">Log In</a>
+				</div>
+			</div>
+		</div>
+	</div>
 	<script src="index.js"></script>
 </body>
 </html>
