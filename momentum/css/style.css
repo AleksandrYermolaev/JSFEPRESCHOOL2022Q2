@@ -31,7 +31,14 @@ body {
   min-height: 220px;  
   padding: 20px;
 }
-
+.player {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: rgba(112, 105, 105, 0.349);
+	border-radius: 7%;
+	padding: 20px;
+}
 .player-controls {
   display: flex;
   align-items: center;
@@ -40,6 +47,13 @@ body {
   margin-bottom: 28px;
 }
 
+.progress-container {
+	width: 100%;
+	height: 2vh;
+	background: #ffffffad;
+	border-radius: 10px;
+	margin: 15px 0;
+}
 .play-list {
   text-align: left;
 }
