@@ -51,7 +51,15 @@ body {
   list-style: none;
   opacity: .8;
   cursor: pointer;
-  transition: .3s;
+  transition: 0.7s;
+}
+
+.playing {
+	text-shadow: 
+	0 0 7px #ffffff,
+    0 0 10px #ffffff,
+    0 0 15px #ffffff,
+    0 0 20px #3469f0;
 }
 
 .play-item:hover {

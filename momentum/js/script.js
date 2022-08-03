@@ -179,22 +179,35 @@ const audio = document.querySelector('.audio');
 const play = document.querySelector('.play');
 const nextSong = document.querySelector('.play-next');
 const prevSong = document.querySelector('.play-prev');
+const playListContainer = document.querySelector('.play-list');
 
 let isPlay = false;
 let playNumber = 0;
-import { playList } from 'playList.js';
+import { playList } from './playList.js';
 audio.src = playList[playNumber].src;
+
+playList.forEach((value) => {
+	const li = document.createElement('li');
+	li.classList.add('play-item');
+	li.textContent = value.title;
+	console.log(value.title);
+	playListContainer.append(li);
+});
+
+const items = document.querySelectorAll('.play-item');
 
 function playAudio() {
   audio.play();
   isPlay = true;
   play.classList.add('pause');
+  glowAudioNumber();
 }
 
 function pauseAudio() {
   audio.pause();
   isPlay = false;
   play.classList.remove('pause');
+  glowAudioNumber();
 }
 
 function nextAudio() {
@@ -202,8 +215,46 @@ function nextAudio() {
   if (playNumber > playList.length - 1) {
     playNumber = 0;
   }
-  // console.log(audio.src);
+  audio.src = playList[playNumber].src;
+  if (isPlay) {
+	audio.play();
+	glowAudioNumber();
+  } else {
+	playAudio();
+  }
 }
+
+function prevAudio() {
+	playNumber -= 1;
+	if (playNumber < 0) {
+	  playNumber = playList.length - 1;
+	}
+	audio.src = playList[playNumber].src;
+	if (isPlay) {
+	  audio.play();
+	  glowAudioNumber();
+	} else {
+	  playAudio();
+	}
+}
+
+function glowAudioNumber() {
+	playList.forEach((value, index) => {
+		if (isPlay && index === playNumber) {
+			items[index].classList.add('playing');
+		} else {
+			items[index].classList.remove('playing');
+		}
+	});
+}
+
+items.forEach((value, index) => {
+	value.addEventListener('click', () => {
+		playNumber = index;
+		audio.src = playList[playNumber].src;
+		playAudio();
+	});
+});
 
 play.addEventListener('click', () => {
   if (isPlay) {
@@ -213,4 +264,6 @@ play.addEventListener('click', () => {
   }
 });
 nextSong.addEventListener('click', nextAudio);
+prevSong.addEventListener('click', prevAudio);
+audio.addEventListener('ended', nextAudio);
 
