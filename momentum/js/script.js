@@ -156,5 +156,61 @@ async function getWeather() {
 	}
 } getWeather();
 
+// Виджет цитат
+const quote = document.querySelector('.quote');
+const author = document.querySelector('.author');
+const qouteChange = document.querySelector('.change-quote');
+qouteChange.addEventListener('click', () => {
+	qouteChange.classList.toggle('active');
+	getQuote();
+});
 
+
+async function getQuote() {
+	let randomQuoteNumber = Math.floor(Math.random() * 19);
+	const res = await fetch ('../assets/quotes.json');
+	const quoteText = await res.json();
+	quote.textContent = `"${quoteText[randomQuoteNumber].text}"`;
+	author.textContent = quoteText[randomQuoteNumber].author;
+} getQuote();
+
+// Аудиоплеер
+const audio = document.querySelector('.audio');
+const play = document.querySelector('.play');
+const nextSong = document.querySelector('.play-next');
+const prevSong = document.querySelector('.play-prev');
+
+let isPlay = false;
+let playNumber = 0;
+import { playList } from 'playList.js';
+audio.src = playList[playNumber].src;
+
+function playAudio() {
+  audio.play();
+  isPlay = true;
+  play.classList.add('pause');
+}
+
+function pauseAudio() {
+  audio.pause();
+  isPlay = false;
+  play.classList.remove('pause');
+}
+
+function nextAudio() {
+  playNumber += 1;
+  if (playNumber > playList.length - 1) {
+    playNumber = 0;
+  }
+  // console.log(audio.src);
+}
+
+play.addEventListener('click', () => {
+  if (isPlay) {
+    pauseAudio();
+  } else {
+    playAudio();
+  }
+});
+nextSong.addEventListener('click', nextAudio);
 
