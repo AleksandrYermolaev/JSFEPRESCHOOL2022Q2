@@ -180,6 +180,9 @@ const play = document.querySelector('.play');
 const nextSong = document.querySelector('.play-next');
 const prevSong = document.querySelector('.play-prev');
 const playListContainer = document.querySelector('.play-list');
+const audioName = document.querySelector('.track-name');
+const audioProgressBar = document.querySelector('.progress-bar');
+const audioTime = document.querySelector('.audio-time');
 
 let isPlay = false;
 let playNumber = 0;
@@ -190,7 +193,6 @@ playList.forEach((value) => {
 	const li = document.createElement('li');
 	li.classList.add('play-item');
 	li.textContent = value.title;
-	console.log(value.title);
 	playListContainer.append(li);
 });
 
@@ -201,6 +203,7 @@ function playAudio() {
   isPlay = true;
   play.classList.add('pause');
   glowAudioNumber();
+  showAudioName();
 }
 
 function pauseAudio() {
@@ -208,6 +211,7 @@ function pauseAudio() {
   isPlay = false;
   play.classList.remove('pause');
   glowAudioNumber();
+  showAudioName();
 }
 
 function nextAudio() {
@@ -219,6 +223,7 @@ function nextAudio() {
   if (isPlay) {
 	audio.play();
 	glowAudioNumber();
+	showAudioName();
   } else {
 	playAudio();
   }
@@ -233,6 +238,7 @@ function prevAudio() {
 	if (isPlay) {
 	  audio.play();
 	  glowAudioNumber();
+	  showAudioName();
 	} else {
 	  playAudio();
 	}
@@ -248,12 +254,38 @@ function glowAudioNumber() {
 	});
 }
 
+function showAudioName() {
+	if (isPlay) {
+		audioName.textContent = playList[playNumber].title;
+	}
+}
+
+function updateAudioProgress() {
+	const progressPercent = (audio.currentTime / audio.duration) * 100;
+	audioProgressBar.style.width = `${progressPercent}%`
+	if (isPlay) {
+		const alreadyPlaySecond = String(Math.round(audio.currentTime % 60)).padStart(2, '0');
+		const alreadyPlayMinutes = String(Math.trunc(audio.currentTime / 60)).padStart(2, '0');
+		let durationSeconds = String(Math.round(audio.duration % 60)).padStart(2, '0');
+		if (isNaN(durationSeconds)) {
+			durationSeconds = '00';
+		}
+		let durationMinutes = String(Math.trunc(audio.duration / 60)).padStart(2, '0');
+		if (isNaN(durationMinutes)) {
+			durationMinutes = '00';
+		}
+		audioTime.textContent = `${alreadyPlayMinutes}:${alreadyPlaySecond}/${durationMinutes}:${durationSeconds}`;
+	} else audioTime.textContent = '00:00/00:00';
+}
+
+
 items.forEach((value, index) => {
 	value.addEventListener('click', () => {
 		playNumber = index;
 		audio.src = playList[playNumber].src;
 		playAudio();
 	});
+	console.log(value);
 });
 
 play.addEventListener('click', () => {
@@ -266,4 +298,5 @@ play.addEventListener('click', () => {
 nextSong.addEventListener('click', nextAudio);
 prevSong.addEventListener('click', prevAudio);
 audio.addEventListener('ended', nextAudio);
+audio.addEventListener('timeupdate', updateAudioProgress);
 
