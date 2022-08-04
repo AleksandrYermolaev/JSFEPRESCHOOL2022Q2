@@ -182,13 +182,17 @@ const prevSong = document.querySelector('.play-prev');
 const playListContainer = document.querySelector('.play-list');
 const audioName = document.querySelector('.track-name');
 const audioProgressBar = document.querySelector('.progress-bar');
+const audioProgressContainer = document.querySelector('.progress-container');
 const audioTime = document.querySelector('.audio-time');
+const audioMute = document.querySelector('.mute');
+const volume = document.querySelector('.volume-progress');
 
 let isPlay = false;
+let isMuted = false;
 let playNumber = 0;
 import { playList } from './playList.js';
 audio.src = playList[playNumber].src;
-
+audio.volume = 0.25;
 playList.forEach((value) => {
 	const li = document.createElement('li');
 	li.classList.add('play-item');
@@ -275,17 +279,44 @@ function updateAudioProgress() {
 			durationMinutes = '00';
 		}
 		audioTime.textContent = `${alreadyPlayMinutes}:${alreadyPlaySecond}/${durationMinutes}:${durationSeconds}`;
-	} else audioTime.textContent = '00:00/00:00';
+	} 
+}
+
+function setProgress(click) {
+	const width = this.clientWidth;
+	const clickX = click.offsetX;
+	audio.currentTime = clickX / width * audio.duration;
+	playAudio();
+} 
+
+function setVolume() {
+	const volumePercent = this.value / 100;
+	audio.volume = volumePercent;
+}
+
+function muteAudio() {
+	if (isMuted) {
+		audio.muted = false;
+		audioMute.classList.remove('unmute');
+		isMuted = false;
+	} else {
+		audio.muted = true;
+		audioMute.classList.add('unmute');
+		isMuted = true;
+	}
 }
 
 
 items.forEach((value, index) => {
 	value.addEventListener('click', () => {
-		playNumber = index;
-		audio.src = playList[playNumber].src;
-		playAudio();
+		if (isPlay && playNumber === index) {
+			pauseAudio();
+		} else {
+			playNumber = index;
+			audio.src = playList[playNumber].src;
+			playAudio();
+		}
 	});
-	console.log(value);
 });
 
 play.addEventListener('click', () => {
@@ -299,4 +330,7 @@ nextSong.addEventListener('click', nextAudio);
 prevSong.addEventListener('click', prevAudio);
 audio.addEventListener('ended', nextAudio);
 audio.addEventListener('timeupdate', updateAudioProgress);
+audioProgressContainer.addEventListener('click', setProgress);
+volume.addEventListener('change', setVolume);
+audioMute.addEventListener('click', muteAudio);
 

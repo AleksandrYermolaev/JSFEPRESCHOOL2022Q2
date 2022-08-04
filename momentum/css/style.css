@@ -101,13 +101,13 @@ body {
 }
 
 .mute {
-	background: url('../assets/svg/mute_white.svg') center/cover no-repeat;
+	background: url('../assets/svg/unmute_white.svg') center/cover no-repeat;
 	flex: 1 0 25%;
 	margin-left: -7%;
 }
 
 .unmute {
-	background: url('../assets/svg/unmute_white.svg') center/cover no-repeat;
+	background: url('../assets/svg/mute_white.svg') center/cover no-repeat;
 }
 
 .volume-container {
@@ -121,11 +121,12 @@ body {
 }
 
 .volume-progress {
-	width: 25%;
+	width: 100%;
 	margin: 0 2px;
-	height: 1.5vh;
+	height: 3px;
 	border-radius: 10px;
 	background: #3469f0;
+	cursor: pointer;
 }
 
 .play-item:hover {
