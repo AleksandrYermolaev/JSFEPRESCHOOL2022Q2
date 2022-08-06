@@ -1,7 +1,29 @@
+import { languages } from './lang.js';
+let currentLang = 'en';
+const languageRadios = document.querySelectorAll('.language');
+
+function changeLaguage() {
+	languageRadios.forEach(radio => {
+		if (radio.checked) {
+			currentLang = radio.value;
+		}
+	});
+	localStorage.clear();
+	yourName.placeholder = languages[currentLang].greetings[4];
+	weatherCity.value = languages[currentLang].city[1];
+	getWeather();
+	getQuote();
+} 
+languageRadios.forEach(radio => {
+	radio.addEventListener('change', changeLaguage);
+});
+
+
+
 //Часы и календарь
 function showTime() {
 	const newDate = new Date();
-	const currentTime = newDate.toLocaleTimeString();
+	const currentTime = newDate.toLocaleTimeString(currentLang);
 	time.textContent = currentTime;
 	showDate();
 	setTimeout(showTime, 1000);
@@ -14,7 +36,7 @@ function showDate() {
 		month: 'long', 
 		day: 'numeric',
 	};
-	const currentDate = newDate.toLocaleDateString('en', options);
+	const currentDate = newDate.toLocaleDateString(currentLang, options);
 	date.textContent = currentDate;
 }
 
@@ -58,11 +80,15 @@ function getLocalStorage() {
 function showGreeting() {
 	const greeting = document.querySelector('.greeting');
 	const timeOfDay = getTimeOfDay();
-	greeting.textContent = `Good ${timeOfDay}, `;
+	if (timeOfDay === 'morning') greeting.textContent = languages[currentLang].greetings[0];
+	if (timeOfDay === 'day') greeting.textContent = languages[currentLang].greetings[1];
+	if (timeOfDay === 'evening') greeting.textContent = languages[currentLang].greetings[2];
+	if (timeOfDay === 'night') greeting.textContent = languages[currentLang].greetings[3];
 	setTimeout(showGreeting, 1000);
 } showGreeting();
 
 const yourName = document.querySelector('.name');
+yourName.placeholder = languages[currentLang].greetings[4];
 window.addEventListener('beforeunload', setLocalStorage);
 window.addEventListener('load', getLocalStorage);
 
@@ -106,30 +132,31 @@ prevSlide.addEventListener('click', getPrevSlide);
 
 // Погода
 const weatherCity = document.querySelector('.city');
-weatherCity.value = 'Minsk';
+weatherCity.placeholder = languages[currentLang].city[0];
+weatherCity.value = languages[currentLang].city[1];
 const weatherIcon = document.querySelector('.weather-icon');
 const weatherTemp = document.querySelector('.temperature');
 const weatherDesc = document.querySelector('.weather-description');
 const weatherWind = document.querySelector('.wind');
 const weatherHumi = document.querySelector('.humidity');
-const windDirections = {
-	'north': [337.5, 22.5],
-	'northeast': [22.5, 67.5],
-	'east': [67.5, 112.5],
-	'southeast': [112.5, 157.5],
-	'south': [157.5, 202.5],
-	'southwest': [202.5, 247.5],
-	'west': [247.5, 292.5],
-	'northwest': [292.5, 337.5]
-};
-let direction;
 weatherCity.addEventListener('change', () => {
 	getWeather();
 	weatherCity.blur();
 });
 
 async function getWeather() {
-	const url = `https://api.openweathermap.org/data/2.5/weather?q=${weatherCity.value}&lang=en&appid=e1fc18dd49c14287ed9de7cdafd21b6a&units=metric`;
+	const windDirections = {
+		[languages[currentLang].wind[0]]: [337.5, 22.5],
+		[languages[currentLang].wind[1]]: [22.5, 67.5],
+		[languages[currentLang].wind[2]]: [67.5, 112.5],
+		[languages[currentLang].wind[3]]: [112.5, 157.5],
+		[languages[currentLang].wind[4]]: [157.5, 202.5],
+		[languages[currentLang].wind[5]]: [202.5, 247.5],
+		[languages[currentLang].wind[6]]: [247.5, 292.5],
+		[languages[currentLang].wind[7]]: [292.5, 337.5]
+	};
+	let direction;
+	const url = `https://api.openweathermap.org/data/2.5/weather?q=${weatherCity.value}&lang=${currentLang}&appid=e1fc18dd49c14287ed9de7cdafd21b6a&units=metric`;
 	const errorData = document.querySelector('.weather-error');
 	try {
 		const res = await fetch(url);
@@ -143,11 +170,12 @@ async function getWeather() {
 				direction = windDirection; 
 			}
 		}
-		weatherWind.textContent = `Wind: ${direction}, ${Math.round(weatherData.wind.speed)} m/s`;
-		weatherHumi.textContent = `Humidity: ${weatherData.main.humidity}%`
+		console.log(direction);
+		weatherWind.textContent = `${languages[currentLang].weather[0]}: ${direction}, ${Math.round(weatherData.wind.speed)} ${languages[currentLang].weather[1]}`;
+		weatherHumi.textContent = `${languages[currentLang].weather[2]}: ${weatherData.main.humidity}%`
 		errorData.textContent = '';
 	} catch (error) {
-		errorData.textContent = 'An error has occurred! Check the spelling of the city and your internet connection!';
+		errorData.textContent = languages[currentLang].error;
 		weatherIcon.textContent = '';
 		weatherTemp.textContent = '';
 		weatherDesc.textContent = '';
@@ -168,7 +196,7 @@ qouteChange.addEventListener('click', () => {
 
 async function getQuote() {
 	let randomQuoteNumber = Math.floor(Math.random() * 19);
-	const res = await fetch ('../assets/quotes.json');
+	const res = await fetch (`../assets/quotes-${currentLang}.json`);
 	const quoteText = await res.json();
 	quote.textContent = `"${quoteText[randomQuoteNumber].text}"`;
 	author.textContent = quoteText[randomQuoteNumber].author;

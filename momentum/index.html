@@ -31,7 +31,7 @@
 			</div>
 		</div>
 		<div class="weather">
-			<input type="text" class="city" placeholder="Enter city"/>
+			<input type="text" class="city" placeholder=""/>
 			<i class="weather-icon owf"></i>
 			<div class="weather-error"></div>
 			<div class="description-container">
@@ -51,7 +51,7 @@
 		<date class="date"></date>
 		<div class="greeting-container">
 			<span class="greeting"></span>
-			<input type="text" class="name" placeholder="[Enter  name]"/>
+			<input type="text" class="name" placeholder=""/>
 		</div>
 	</main>
   	<footer class="footer">
@@ -59,6 +59,14 @@
 		<div>
 			<div class="quote"></div>
 			<div class="author"></div>
+		</div>
+		<div class="settings">
+			<label for="ru">RU</label>
+			<input type="radio" name="language" id="ru" class="language" value="ru">
+			<label for="en">EN</label>
+			<input type="radio" name="language" id="en" class="language" value="en" checked>
+			<label for="be">BE</label>
+			<input type="radio" name="language" id="be" class="language" value="be">
 		</div>
   	</footer>
   	<script src="js/script.js" type="module"></script>
