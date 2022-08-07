@@ -170,7 +170,6 @@ async function getWeather() {
 				direction = windDirection; 
 			}
 		}
-		console.log(direction);
 		weatherWind.textContent = `${languages[currentLang].weather[0]}: ${direction}, ${Math.round(weatherData.wind.speed)} ${languages[currentLang].weather[1]}`;
 		weatherHumi.textContent = `${languages[currentLang].weather[2]}: ${weatherData.main.humidity}%`
 		errorData.textContent = '';
@@ -362,3 +361,19 @@ audioProgressContainer.addEventListener('click', setProgress);
 volume.addEventListener('change', setVolume);
 audioMute.addEventListener('click', muteAudio);
 
+
+async function getRandomImage() {
+	const url = 'https://api.unsplash.com/photos/random?orientation=landscape&query=nature&client_id=MMol-SmcJ1splQ5_Ix6HvUkeDdTX0YT90JcNRRJ0KVs';
+	const resolve = await fetch(url);
+	const result = await resolve.json();
+	console.log(result.urls.regular);
+
+}
+
+async function getRandomImage1() {
+	const url = 'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=c61b16741f2cc297ca086aab66e44795&tags=morning&extras=url_l&format=json&nojsoncallback=1';
+	const resolve = await fetch(url);
+	const result = await resolve.json();
+	console.log(result.photos.photo[0].url_l);
+}
+getRandomImage1();
