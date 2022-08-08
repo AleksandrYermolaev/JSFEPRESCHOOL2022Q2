@@ -362,14 +362,20 @@ body {
 	height: 40vh;
 	border: 1px solid red;
 	display: flex;
+	flex-direction: column;
+	align-items: start;
+	gap: 3%;
+
 }
 
 .language {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-around;
 	gap: 10px;
 }
-.radio {
+.language-radio,
+.api-radio {
 	display: none;
 }
 

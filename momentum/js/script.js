@@ -1,12 +1,16 @@
 import { languages } from './lang.js';
-let currentLang = 'en';
-const languageRadios = document.querySelectorAll('.radio');
-const languageLabels = document.querySelectorAll('.label');
+const settings = {
+	currentLang: 'en',
+	imagesApi: 'Git',
+
+};
+const languageRadios = document.querySelectorAll('.language-radio');
+const languageLabels = document.querySelectorAll('.language-label');
 
 function changeLaguage() {
 	languageRadios.forEach(radio => {
 		if (radio.checked) {
-			currentLang = radio.value;
+			settings.currentLang = radio.value;
 			languageLabels.forEach(label => {
 				if (label.classList.contains(radio.id)) {
 					label.classList.add('playing');
@@ -15,8 +19,8 @@ function changeLaguage() {
 		}
 	});
 	localStorage.clear();
-	yourName.placeholder = languages[currentLang].greetings[4];
-	weatherCity.value = languages[currentLang].city[1];
+	yourName.placeholder = languages[settings.currentLang].greetings[4];
+	weatherCity.value = languages[settings.currentLang].city[1];
 	getWeather();
 	getQuote();
 } 
@@ -25,11 +29,29 @@ languageRadios.forEach(radio => {
 });
 
 
+const apiRadios = document.querySelectorAll('.api-radio');
+const apiLabels = document.querySelectorAll('.api-label');
+function changeApi() {
+	apiRadios.forEach(radio => {
+		if (radio.checked) {
+			settings.imagesApi = radio.value;
+			apiLabels.forEach(label => {
+				if (label.classList.contains(radio.id)) {
+					label.classList.add('playing');
+				} else label.classList.remove('playing');
+			});
+		}
+	});
+	setBg();
+} 
+apiRadios.forEach(radio => {
+	radio.addEventListener('change', changeApi);
+});
 
 //Часы и календарь
 function showTime() {
 	const newDate = new Date();
-	const currentTime = newDate.toLocaleTimeString(currentLang);
+	const currentTime = newDate.toLocaleTimeString(settings.currentLang);
 	time.textContent = currentTime;
 	showDate();
 	setTimeout(showTime, 1000);
@@ -42,7 +64,7 @@ function showDate() {
 		month: 'long', 
 		day: 'numeric',
 	};
-	const currentDate = newDate.toLocaleDateString(currentLang, options);
+	const currentDate = newDate.toLocaleDateString(settings.currentLang, options);
 	date.textContent = currentDate;
 }
 
@@ -86,21 +108,22 @@ function getLocalStorage() {
 function showGreeting() {
 	const greeting = document.querySelector('.greeting');
 	const timeOfDay = getTimeOfDay();
-	if (timeOfDay === 'morning') greeting.textContent = languages[currentLang].greetings[0];
-	if (timeOfDay === 'day') greeting.textContent = languages[currentLang].greetings[1];
-	if (timeOfDay === 'evening') greeting.textContent = languages[currentLang].greetings[2];
-	if (timeOfDay === 'night') greeting.textContent = languages[currentLang].greetings[3];
+	if (timeOfDay === 'morning') greeting.textContent = languages[settings.currentLang].greetings[0];
+	if (timeOfDay === 'day') greeting.textContent = languages[settings.currentLang].greetings[1];
+	if (timeOfDay === 'evening') greeting.textContent = languages[settings.currentLang].greetings[2];
+	if (timeOfDay === 'night') greeting.textContent = languages[settings.currentLang].greetings[3];
 	setTimeout(showGreeting, 1000);
 } showGreeting();
 
 const yourName = document.querySelector('.name');
-yourName.placeholder = languages[currentLang].greetings[4];
+yourName.placeholder = languages[settings.currentLang].greetings[4];
 window.addEventListener('beforeunload', setLocalStorage);
 window.addEventListener('load', getLocalStorage);
 
+
 //Слайдер изображений
 async function setBg() {
-	if (imagesApi === 'Git') {
+	if (settings.imagesApi === 'Git') {
 		const linksTemlates = {
 			'morning': 'https://raw.githubusercontent.com/AleksandrYermolaev/tasks-assets/assets/images/morning/',
 			'day': 'https://raw.githubusercontent.com/AleksandrYermolaev/tasks-assets/assets/images/afternoon/',
@@ -114,7 +137,7 @@ async function setBg() {
 			body.style.backgroundImage = `url('${imageUrl}')`;
 		});
 	}
-	if (imagesApi === 'Unsplash') {
+	if (settings.imagesApi === 'Unsplash') {
 		const url = `https://api.unsplash.com/photos/random?orientation=landscape&query=${getTimeOfDay()}&client_id=MMol-SmcJ1splQ5_Ix6HvUkeDdTX0YT90JcNRRJ0KVs`;
 		const resolve = await fetch(url);
 		const result = await resolve.json();
@@ -125,7 +148,7 @@ async function setBg() {
 			body.style.backgroundImage = `url('${imageUrl}')`;
 		});
 	}
-	if (imagesApi === 'Flickr') {
+	if (settings.imagesApi === 'Flickr') {
 		const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=c61b16741f2cc297ca086aab66e44795&tags=${getTimeOfDay()}&extras=url_l&format=json&nojsoncallback=1`;
 		const resolve = await fetch(url);
 		const result = await resolve.json();
@@ -166,7 +189,7 @@ function getPrevSlide() {
 	setBg();
 }
 
-let imagesApi = 'Git';
+
 let flickrCount = Math.floor(Math.random() * 100 + 1);;
 let randomImageNumber = Math.floor(Math.random() * 20 + 1);
 const body = document.querySelector('body');
@@ -178,8 +201,8 @@ prevSlide.addEventListener('click', getPrevSlide);
 
 // Погода
 const weatherCity = document.querySelector('.city');
-weatherCity.placeholder = languages[currentLang].city[0];
-weatherCity.value = languages[currentLang].city[1];
+weatherCity.placeholder = languages[settings.currentLang].city[0];
+weatherCity.value = languages[settings.currentLang].city[1];
 const weatherIcon = document.querySelector('.weather-icon');
 const weatherTemp = document.querySelector('.temperature');
 const weatherDesc = document.querySelector('.weather-description');
@@ -192,17 +215,17 @@ weatherCity.addEventListener('change', () => {
 
 async function getWeather() {
 	const windDirections = {
-		[languages[currentLang].wind[0]]: [337.5, 22.5],
-		[languages[currentLang].wind[1]]: [22.5, 67.5],
-		[languages[currentLang].wind[2]]: [67.5, 112.5],
-		[languages[currentLang].wind[3]]: [112.5, 157.5],
-		[languages[currentLang].wind[4]]: [157.5, 202.5],
-		[languages[currentLang].wind[5]]: [202.5, 247.5],
-		[languages[currentLang].wind[6]]: [247.5, 292.5],
-		[languages[currentLang].wind[7]]: [292.5, 337.5]
+		[languages[settings.currentLang].wind[0]]: [337.5, 22.5],
+		[languages[settings.currentLang].wind[1]]: [22.5, 67.5],
+		[languages[settings.currentLang].wind[2]]: [67.5, 112.5],
+		[languages[settings.currentLang].wind[3]]: [112.5, 157.5],
+		[languages[settings.currentLang].wind[4]]: [157.5, 202.5],
+		[languages[settings.currentLang].wind[5]]: [202.5, 247.5],
+		[languages[settings.currentLang].wind[6]]: [247.5, 292.5],
+		[languages[settings.currentLang].wind[7]]: [292.5, 337.5]
 	};
 	let direction;
-	const url = `https://api.openweathermap.org/data/2.5/weather?q=${weatherCity.value}&lang=${currentLang}&appid=e1fc18dd49c14287ed9de7cdafd21b6a&units=metric`;
+	const url = `https://api.openweathermap.org/data/2.5/weather?q=${weatherCity.value}&lang=${settings.currentLang}&appid=e1fc18dd49c14287ed9de7cdafd21b6a&units=metric`;
 	const errorData = document.querySelector('.weather-error');
 	try {
 		const res = await fetch(url);
@@ -216,11 +239,11 @@ async function getWeather() {
 				direction = windDirection; 
 			}
 		}
-		weatherWind.textContent = `${languages[currentLang].weather[0]}: ${direction}, ${Math.round(weatherData.wind.speed)} ${languages[currentLang].weather[1]}`;
-		weatherHumi.textContent = `${languages[currentLang].weather[2]}: ${weatherData.main.humidity}%`
+		weatherWind.textContent = `${languages[settings.currentLang].weather[0]}: ${direction}, ${Math.round(weatherData.wind.speed)} ${languages[settings.currentLang].weather[1]}`;
+		weatherHumi.textContent = `${languages[settings.currentLang].weather[2]}: ${weatherData.main.humidity}%`
 		errorData.textContent = '';
 	} catch (error) {
-		errorData.textContent = languages[currentLang].error;
+		errorData.textContent = languages[settings.currentLang].error;
 		weatherIcon.textContent = '';
 		weatherTemp.textContent = '';
 		weatherDesc.textContent = '';
@@ -241,7 +264,7 @@ qouteChange.addEventListener('click', () => {
 
 async function getQuote() {
 	let randomQuoteNumber = Math.floor(Math.random() * 19);
-	const res = await fetch (`../assets/quotes-${currentLang}.json`);
+	const res = await fetch (`../assets/quotes-${settings.currentLang}.json`);
 	const quoteText = await res.json();
 	quote.textContent = `"${quoteText[randomQuoteNumber].text}"`;
 	author.textContent = quoteText[randomQuoteNumber].author;
