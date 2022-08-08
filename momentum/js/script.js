@@ -1,11 +1,17 @@
 import { languages } from './lang.js';
 let currentLang = 'en';
-const languageRadios = document.querySelectorAll('.language');
+const languageRadios = document.querySelectorAll('.radio');
+const languageLabels = document.querySelectorAll('.label');
 
 function changeLaguage() {
 	languageRadios.forEach(radio => {
 		if (radio.checked) {
 			currentLang = radio.value;
+			languageLabels.forEach(label => {
+				if (label.classList.contains(radio.id)) {
+					label.classList.add('playing');
+				} else label.classList.remove('playing');
+			});
 		}
 	});
 	localStorage.clear();
@@ -93,25 +99,60 @@ window.addEventListener('beforeunload', setLocalStorage);
 window.addEventListener('load', getLocalStorage);
 
 //Слайдер изображений
-function setBg() {
-	const linksTemlates = {
-		'morning': 'https://raw.githubusercontent.com/AleksandrYermolaev/tasks-assets/assets/images/morning/',
-		'day': 'https://raw.githubusercontent.com/AleksandrYermolaev/tasks-assets/assets/images/afternoon/',
-		'evening': 'https://raw.githubusercontent.com/AleksandrYermolaev/tasks-assets/assets/images/evening/',
-		'night': 'https://raw.githubusercontent.com/AleksandrYermolaev/tasks-assets/assets/images/night/',
-	};
-	const imageUrl = `${linksTemlates[getTimeOfDay()]}${String(randomImageNumber).padStart(2, '0')}.jpg`;
-	const img = new Image();
-	img.src = imageUrl;
-	img.addEventListener('load', () => {
-		body.style.backgroundImage = `url('${imageUrl}')`;
-	});
+async function setBg() {
+	if (imagesApi === 'Git') {
+		const linksTemlates = {
+			'morning': 'https://raw.githubusercontent.com/AleksandrYermolaev/tasks-assets/assets/images/morning/',
+			'day': 'https://raw.githubusercontent.com/AleksandrYermolaev/tasks-assets/assets/images/afternoon/',
+			'evening': 'https://raw.githubusercontent.com/AleksandrYermolaev/tasks-assets/assets/images/evening/',
+			'night': 'https://raw.githubusercontent.com/AleksandrYermolaev/tasks-assets/assets/images/night/',
+		};
+		const imageUrl = `${linksTemlates[getTimeOfDay()]}${String(randomImageNumber).padStart(2, '0')}.jpg`;
+		const img = new Image();
+		img.src = imageUrl;
+		img.addEventListener('load', () => {
+			body.style.backgroundImage = `url('${imageUrl}')`;
+		});
+	}
+	if (imagesApi === 'Unsplash') {
+		const url = `https://api.unsplash.com/photos/random?orientation=landscape&query=${getTimeOfDay()}&client_id=MMol-SmcJ1splQ5_Ix6HvUkeDdTX0YT90JcNRRJ0KVs`;
+		const resolve = await fetch(url);
+		const result = await resolve.json();
+		const imageUrl = result.urls.regular;
+		const img = new Image();
+		img.src = imageUrl;
+		img.addEventListener('load', () => {
+			body.style.backgroundImage = `url('${imageUrl}')`;
+		});
+	}
+	if (imagesApi === 'Flickr') {
+		const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=c61b16741f2cc297ca086aab66e44795&tags=${getTimeOfDay()}&extras=url_l&format=json&nojsoncallback=1`;
+		const resolve = await fetch(url);
+		const result = await resolve.json();
+		let imageUrl
+		for (let i = 0; i < result.photos.photo.length; i++) {
+			if (result.photos.photo[flickrCount].url_l && result.photos.photo[flickrCount].height_l && result.photos.photo[flickrCount].height_l < result.photos.photo[flickrCount].width_l) {
+				imageUrl = result.photos.photo[flickrCount].url_l;
+				break;
+			} else {
+				getNextSlide();
+			}
+		}
+		const img = new Image();
+		img.src = imageUrl;
+		img.addEventListener('load', () => {
+			body.style.backgroundImage = `url('${imageUrl}')`;
+		});
+	}
 }
 
 function getNextSlide() {
 	if (randomImageNumber < 20) {
 		randomImageNumber += 1;
 	} else randomImageNumber = 1;
+	if (flickrCount < 100) {
+		flickrCount += 1;
+	} else flickrCount = 1;
 	setBg();
 }
 
@@ -119,9 +160,14 @@ function getPrevSlide() {
 	if (randomImageNumber > 1) {
 		randomImageNumber -= 1;
 	} else randomImageNumber = 20;
+	if (flickrCount > 1) {
+		flickrCount -= 1;
+	} else flickrCount = 100;
 	setBg();
 }
 
+let imagesApi = 'Git';
+let flickrCount = Math.floor(Math.random() * 100 + 1);;
 let randomImageNumber = Math.floor(Math.random() * 20 + 1);
 const body = document.querySelector('body');
 setBg();
@@ -360,20 +406,3 @@ audio.addEventListener('timeupdate', updateAudioProgress);
 audioProgressContainer.addEventListener('click', setProgress);
 volume.addEventListener('change', setVolume);
 audioMute.addEventListener('click', muteAudio);
-
-
-async function getRandomImage() {
-	const url = 'https://api.unsplash.com/photos/random?orientation=landscape&query=nature&client_id=MMol-SmcJ1splQ5_Ix6HvUkeDdTX0YT90JcNRRJ0KVs';
-	const resolve = await fetch(url);
-	const result = await resolve.json();
-	console.log(result.urls.regular);
-
-}
-
-async function getRandomImage1() {
-	const url = 'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=c61b16741f2cc297ca086aab66e44795&tags=morning&extras=url_l&format=json&nojsoncallback=1';
-	const resolve = await fetch(url);
-	const result = await resolve.json();
-	console.log(result.photos.photo[0].url_l);
-}
-getRandomImage1();

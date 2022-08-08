@@ -354,6 +354,25 @@ body {
   min-height: 20px;
 }
 
+.settings {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 15%;
+	height: 40vh;
+	border: 1px solid red;
+	display: flex;
+}
+
+.language {
+	display: flex;
+	justify-content: space-around;
+	gap: 10px;
+}
+.radio {
+	display: none;
+}
+
 @media (max-width: 768px) {
   .time {
     min-height: 80px;
