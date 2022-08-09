@@ -41,6 +41,7 @@ body {
 	background: rgba(112, 105, 105, 0.349);
 	border-radius: 7%;
 	padding: 20px;
+	transition: all 1s ease;
 }
 .player-controls {
   display: flex;
@@ -84,13 +85,6 @@ body {
   transition: 0.7s;
 }
 
-.playing {
-	text-shadow: 
-	0 0 7px #ffffff,
-    0 0 10px #ffffff,
-    0 0 15px #ffffff,
-    0 0 20px #3469f0;
-}
 .volume-control {
 	width: 100%;
 	height: 4vh;
@@ -211,6 +205,7 @@ body {
   width: 180px;
   min-height: 180px;  
   text-align: left;
+  transition: all 1s ease;
 }
 
 .weather-error {
@@ -283,12 +278,14 @@ body {
   font-family: 'Arial-MT';
   font-size: 100px;
   letter-spacing: -4px;  
+  transition: all 1s ease;
 }
 
 .date {
   min-height: 28px;
   font-size: 24px;
   margin-bottom: 20px;
+  transition: all 1s ease;
 }
 
 .greeting-container {
@@ -299,6 +296,7 @@ body {
   min-height: 48px;
   width: 100vw;
   font-size: 40px;
+  transition: all 1s ease;
 }
 
 .greeting {
@@ -333,6 +331,7 @@ body {
   height: 30vh;
   min-height: 160px;  
   padding: 20px;
+  transition: all 1s ease;
 }
 
 .change-quote {
@@ -356,16 +355,16 @@ body {
 
 .settings {
 	position: absolute;
-	bottom: 0;
+	bottom: 12%;
 	right: 0;
-	width: 15%;
-	height: 40vh;
-	border: 1px solid red;
+	width: 20%;
+	background: rgba(112, 105, 105, 0.349);
+	border-radius: 10px;
+	padding: 10px;
 	display: flex;
 	flex-direction: column;
-	align-items: start;
+	align-items: flex-start;
 	gap: 3%;
-
 }
 
 .language {
@@ -373,10 +372,61 @@ body {
 	flex-wrap: wrap;
 	justify-content: space-around;
 	gap: 10px;
+	margin-bottom: 10px;
+}
+.language-label {
+	text-decoration: underline;
+}
+.photo-source {
+	margin-bottom: 10px;
+}
+.api-label {
+	text-decoration: underline;
 }
 .language-radio,
 .api-radio {
 	display: none;
+}
+.photo-tags {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+
+}
+.search {
+	font-family: 'Arial', sans-serif;
+	font-size: 16px;
+	width: 80%;
+}
+.search:focus {
+	outline: none;
+}
+.set {
+	font-weight: bold;
+	font-size: 18px;
+}
+.show-items {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: start;
+	gap: 5px;
+}
+.hide-label {
+	background-color: #ffffff1f;
+	border-radius: 10%;
+}
+.disabled {
+	opacity: 0;
+	visibility: hidden;
+}
+
+.playing {
+	text-shadow: 
+	0 0 7px #ffffff,
+    0 0 10px #ffffff,
+    0 0 15px #ffffff,
+    0 0 20px #3469f0;
+	text-decoration: none;
 }
 
 @media (max-width: 768px) {

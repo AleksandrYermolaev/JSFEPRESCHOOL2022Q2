@@ -1,11 +1,49 @@
+//Настройки
 import { languages } from './lang.js';
 const settings = {
 	currentLang: 'en',
 	imagesApi: 'Git',
-
+	apiTag: 'Nature'
 };
 const languageRadios = document.querySelectorAll('.language-radio');
 const languageLabels = document.querySelectorAll('.language-label');
+const searchImageApi = document.querySelector('.search');
+searchImageApi.addEventListener('keydown', (key) => {
+	if (key.keyCode === 13) {
+		settings.apiTag = searchImageApi.value;
+		setBg();
+	}
+});
+const playerBlock = document.querySelector('.player');
+const weatherBlock = document.querySelector('.weather');
+const timeBlock = document.querySelector('.time');
+const dateBlock = document.querySelector('.date');
+const greetingBlock = document.querySelector('.greeting-container');
+const quoteBlock = document.querySelector('.footer');
+const playerHider = document.querySelector('.player-hider');
+const weatherHider = document.querySelector('.weather-hider');
+const timeHider = document.querySelector('.time-hider');
+const dateHider = document.querySelector('.date-hider');
+const greetingHider = document.querySelector('.greeting-hider');
+const quoteHider = document.querySelector('.footer-hider');
+playerHider.addEventListener('change', () => {
+	playerBlock.classList.toggle('disabled');
+});
+weatherHider.addEventListener('change', () => {
+	weatherBlock.classList.toggle('disabled');
+});
+timeHider.addEventListener('change', () => {
+	timeBlock.classList.toggle('disabled');
+});
+dateHider.addEventListener('change', () => {
+	dateBlock.classList.toggle('disabled');
+});
+greetingHider.addEventListener('change', () => {
+	greetingBlock.classList.toggle('disabled');
+});
+quoteHider.addEventListener('change', () => {
+	quoteBlock.classList.toggle('disabled');
+});
 
 function changeLaguage() {
 	languageRadios.forEach(radio => {
@@ -124,6 +162,7 @@ window.addEventListener('load', getLocalStorage);
 //Слайдер изображений
 async function setBg() {
 	if (settings.imagesApi === 'Git') {
+		searchImageApi.disabled = true;
 		const linksTemlates = {
 			'morning': 'https://raw.githubusercontent.com/AleksandrYermolaev/tasks-assets/assets/images/morning/',
 			'day': 'https://raw.githubusercontent.com/AleksandrYermolaev/tasks-assets/assets/images/afternoon/',
@@ -138,7 +177,8 @@ async function setBg() {
 		});
 	}
 	if (settings.imagesApi === 'Unsplash') {
-		const url = `https://api.unsplash.com/photos/random?orientation=landscape&query=${getTimeOfDay()}&client_id=MMol-SmcJ1splQ5_Ix6HvUkeDdTX0YT90JcNRRJ0KVs`;
+		searchImageApi.disabled = false;
+		const url = `https://api.unsplash.com/photos/random?orientation=landscape&query=${settings.apiTag}&client_id=MMol-SmcJ1splQ5_Ix6HvUkeDdTX0YT90JcNRRJ0KVs`;
 		const resolve = await fetch(url);
 		const result = await resolve.json();
 		const imageUrl = result.urls.regular;
@@ -149,7 +189,8 @@ async function setBg() {
 		});
 	}
 	if (settings.imagesApi === 'Flickr') {
-		const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=c61b16741f2cc297ca086aab66e44795&tags=${getTimeOfDay()}&extras=url_l&format=json&nojsoncallback=1`;
+		searchImageApi.disabled = false;
+		const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=c61b16741f2cc297ca086aab66e44795&tags=${settings.apiTag}&extras=url_l&format=json&nojsoncallback=1`;
 		const resolve = await fetch(url);
 		const result = await resolve.json();
 		let imageUrl

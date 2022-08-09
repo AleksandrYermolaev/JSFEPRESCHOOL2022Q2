@@ -60,9 +60,10 @@
 			<div class="quote"></div>
 			<div class="author"></div>
 		</div>
+	</footer>
 		<div class="settings">
 			<div class="language">
-				<span>Language:</span>
+				<span class="set">Language:</span>
 				<label for="ru" class="language-label ru">RU</label>
 				<input type="radio" name="language" id="ru" class="language-radio" value="ru">
 				<label for="en" class="language-label en playing">EN</label>
@@ -71,7 +72,7 @@
 				<input type="radio" name="language" id="be" class="language-radio" value="be">
 			</div>
 			<div class="photo-source">
-				<span>Image API:</span>
+				<span class="set">Image API:</span>
 				<label for="git" class="api-label git playing">GIT</label>
 				<input type="radio" name="api" id="git" class="api-radio" value="Git" checked>
 				<label for="unsplash" class="api-label unsplash ">Unsplash</label>
@@ -80,13 +81,32 @@
 				<input type="radio" name="api" id="flickr" class="api-radio" value="Flickr">
 			</div>
 			<div class="photo-tags">
-
+				<span class="set">Tag:</span>
+				<input type="text" class="search" placeholder="[Enter API tag]" value="Nature">
 			</div>
 			<div class="show-items">
-
+				<span class="set">Show elements:</span>
+				<label for="playerBlock" class="hide-label">Player: 
+					<input type="checkbox" class="player-hider" checked>
+				</label>
+				<label for="playerBlock" class="hide-label">Weather: 
+					<input type="checkbox" class="weather-hider" checked>
+				</label>
+				<label for="playerBlock" class="hide-label">Time: 
+					<input type="checkbox" class="time-hider" checked>
+				</label>
+				<label for="playerBlock" class="hide-label">Date:
+					<input type="checkbox" class="date-hider" checked>
+				</label>
+				<label for="playerBlock" class="hide-label">Greetings:
+					<input type="checkbox" class="greeting-hider" checked>
+				</label>
+				<label for="playerBlock" class="hide-label">Quote of the day:
+					<input type="checkbox" class="footer-hider" checked>
+				</label>
 			</div>
 		</div>
-  	</footer>
+  	
   	<script src="js/script.js" type="module"></script>
 </body>
 </html>
