@@ -86,6 +86,23 @@ apiRadios.forEach(radio => {
 	radio.addEventListener('change', changeApi);
 });
 
+const showSettings = document.querySelector('.show-settings');
+const settingsBlock = document.querySelector('.settings');
+const bodyBlock = document.querySelector('body');
+showSettings.addEventListener('click', () => {
+	settingsBlock.classList.toggle('settings-hider');
+	showSettings.classList.toggle('active');
+});
+if (settingsBlock.classList.contains('settings-hider')) {
+	window.addEventListener('click', event => {
+		console.log(event.target.classList.contains('settings'));
+		if (!event.target.classList.contains('settings')) {
+			settingsBlock.classList.toggle('settings-hider');
+			showSettings.classList.toggle('active');
+		}
+	});
+}
+
 //Часы и календарь
 function showTime() {
 	const newDate = new Date();
@@ -256,7 +273,8 @@ weatherCity.addEventListener('change', () => {
 
 async function getWeather() {
 	const windDirections = {
-		[languages[settings.currentLang].wind[0]]: [337.5, 22.5],
+		[languages[settings.currentLang].wind[0]]: [337.5, 360],
+		[languages[settings.currentLang].wind[0]]: [0, 22.5],
 		[languages[settings.currentLang].wind[1]]: [22.5, 67.5],
 		[languages[settings.currentLang].wind[2]]: [67.5, 112.5],
 		[languages[settings.currentLang].wind[3]]: [112.5, 157.5],
