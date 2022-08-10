@@ -45,6 +45,13 @@ quoteHider.addEventListener('change', () => {
 	quoteBlock.classList.toggle('disabled');
 });
 
+const setLang = document.querySelector('.set-lang');
+const setImage = document.querySelector('.set-image');
+const setTag = document.querySelector('.set-tag');
+const setShow = document.querySelector('.set-show');
+const search = document.querySelector('.search');
+
+
 function changeLaguage() {
 	languageRadios.forEach(radio => {
 		if (radio.checked) {
@@ -61,6 +68,11 @@ function changeLaguage() {
 	weatherCity.value = languages[settings.currentLang].city[1];
 	getWeather();
 	getQuote();
+	setLang.textContent = languages[settings.currentLang].set[0];
+	setImage.textContent = languages[settings.currentLang].set[1];
+	setTag.textContent = languages[settings.currentLang].set[2];
+	setShow.textContent = languages[settings.currentLang].set[3];
+	search.placeholder = languages[settings.currentLang].set[4];
 } 
 languageRadios.forEach(radio => {
 	radio.addEventListener('change', changeLaguage);
@@ -148,7 +160,13 @@ function getTimeOfDay() {
 function setLocalStorage() {
 	localStorage.setItem('name', yourName.value);
 	localStorage.setItem('city', weatherCity.value);
+	localStorage.setItem('language', settings.currentLang);
+	localStorage.setItem('api', settings.imagesApi);
 }
+	searchImageApi.addEventListener('input', () => {
+		const valueApi = searchImageApi.value;
+		localStorage.setItem('tag', valueApi);
+	});
 
 function getLocalStorage() {
 	if (localStorage.getItem('name')) {
@@ -157,6 +175,15 @@ function getLocalStorage() {
 	if (localStorage.getItem('city')) {
 		weatherCity.value = localStorage.getItem('city');
 		getWeather();
+	}
+	if (localStorage.getItem('language')) {
+		settings.currentLang = localStorage.getItem('language');
+		languageRadios.forEach(radio => radio.checked = radio.value === settings.currentLang ? true : false);
+		changeLaguage();
+	}
+	console.log(localStorage.getItem('tag'));
+	if (localStorage.getItem('tag')) {
+		searchImageApi.value = localStorage.getItem('tag');
 	}
 }
 
