@@ -26,6 +26,7 @@ const timeHider = document.querySelector('.time-hider');
 const dateHider = document.querySelector('.date-hider');
 const greetingHider = document.querySelector('.greeting-hider');
 const quoteHider = document.querySelector('.footer-hider');
+
 playerHider.addEventListener('change', () => {
 	playerBlock.classList.toggle('disabled');
 });
@@ -63,7 +64,7 @@ function changeLaguage() {
 			});
 		}
 	});
-	localStorage.clear();
+	//localStorage.clear();
 	yourName.placeholder = languages[settings.currentLang].greetings[4];
 	weatherCity.value = languages[settings.currentLang].city[1];
 	getWeather();
@@ -105,15 +106,7 @@ showSettings.addEventListener('click', () => {
 	settingsBlock.classList.toggle('settings-hider');
 	showSettings.classList.toggle('active');
 });
-if (settingsBlock.classList.contains('settings-hider')) {
-	window.addEventListener('click', event => {
-		console.log(event.target.classList.contains('settings'));
-		if (!event.target.classList.contains('settings')) {
-			settingsBlock.classList.toggle('settings-hider');
-			showSettings.classList.toggle('active');
-		}
-	});
-}
+
 
 //Часы и календарь
 function showTime() {
@@ -162,6 +155,13 @@ function setLocalStorage() {
 	localStorage.setItem('city', weatherCity.value);
 	localStorage.setItem('language', settings.currentLang);
 	localStorage.setItem('api', settings.imagesApi);
+	localStorage.setItem('player', playerHider.checked);
+	localStorage.setItem('weather', weatherHider.checked);
+	localStorage.setItem('time', timeHider.checked);
+	localStorage.setItem('date', dateHider.checked);
+	localStorage.setItem('greeting', greetingHider.checked);
+	localStorage.setItem('quote', quoteHider.checked);
+
 }
 	searchImageApi.addEventListener('input', () => {
 		const valueApi = searchImageApi.value;
@@ -181,10 +181,57 @@ function getLocalStorage() {
 		languageRadios.forEach(radio => radio.checked = radio.value === settings.currentLang ? true : false);
 		changeLaguage();
 	}
-	console.log(localStorage.getItem('tag'));
 	if (localStorage.getItem('tag')) {
 		searchImageApi.value = localStorage.getItem('tag');
 	}
+	if (localStorage.getItem('api')) {
+		settings.imagesApi = localStorage.getItem('api');
+		apiRadios.forEach(radio => radio.checked = radio.value === settings.imagesApi ? true : false);
+		changeApi();
+	}
+	if (localStorage.getItem('player') === 'true' && localStorage.getItem('player')) {
+		playerHider.checked = true;
+		playerBlock.classList.remove('disabled');
+	} else {
+		playerHider.checked = false;
+		playerBlock.classList.add('disabled');
+	}
+	if (localStorage.getItem('weather') === 'true' && localStorage.getItem('weather')) {
+		weatherHider.checked = true;
+		weatherBlock.classList.remove('disabled');
+	} else {
+		weatherHider.checked = false;
+		weatherBlock.classList.add('disabled');
+	}
+	if (localStorage.getItem('time') === 'true' && localStorage.getItem('time')) {
+		timeHider.checked = true;
+		timeBlock.classList.remove('disabled');
+	} else {
+		timeHider.checked = false;
+		timeBlock.classList.add('disabled');
+	}
+	if (localStorage.getItem('date') === 'true' && localStorage.getItem('date')) {
+		dateHider.checked = true;
+		dateBlock.classList.remove('disabled');
+	} else {
+		dateHider.checked = false;
+		dateBlock.classList.add('disabled');
+	}
+	if (localStorage.getItem('greeting') === 'true' && localStorage.getItem('greeting')) {
+		greetingHider.checked = true;
+		greetingBlock.classList.remove('disabled');
+	} else {
+		greetingHider.checked = false;
+		greetingBlock.classList.add('disabled');
+	}
+	if (localStorage.getItem('quote') === 'true' && localStorage.getItem('quote')) {
+		quoteHider.checked = true;
+		quoteBlock.classList.remove('disabled');
+	} else {
+		quoteHider.checked = false;
+		quoteBlock.classList.add('disabled');
+	}
+	
 }
 
 function showGreeting() {
