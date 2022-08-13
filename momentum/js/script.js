@@ -1,7 +1,7 @@
 //Настройки--------------------------------------------------------
 import { languages } from './lang.js';
 const settings = {
-	currentLang: 'en',
+	currentLang: 'ru',
 	imagesApi: 'Git',
 	apiTag: 'Nature'
 };
