@@ -1,4 +1,4 @@
-//Настройки
+//Настройки--------------------------------------------------------
 import { languages } from './lang.js';
 const settings = {
 	currentLang: 'en',
@@ -108,7 +108,7 @@ showSettings.addEventListener('click', () => {
 });
 
 
-//Часы и календарь
+//Часы и календарь----------------------------------------------
 function showTime() {
 	const newDate = new Date();
 	const currentTime = newDate.toLocaleTimeString(settings.currentLang);
@@ -133,7 +133,7 @@ const date = document.querySelector('.date');
 showTime();
 
 
-//Приветствие	
+//Приветствие-----------------------------------------------------
 function getTimeOfDay() {
 	const newDate = new Date();
 	const currentHours = newDate.getHours();
@@ -150,6 +150,22 @@ function getTimeOfDay() {
 	}
 }
 
+function showGreeting() {
+	const greeting = document.querySelector('.greeting');
+	const timeOfDay = getTimeOfDay();
+	if (timeOfDay === 'morning') greeting.textContent = languages[settings.currentLang].greetings[0];
+	if (timeOfDay === 'day') greeting.textContent = languages[settings.currentLang].greetings[1];
+	if (timeOfDay === 'evening') greeting.textContent = languages[settings.currentLang].greetings[2];
+	if (timeOfDay === 'night') greeting.textContent = languages[settings.currentLang].greetings[3];
+	setTimeout(showGreeting, 1000);
+} showGreeting();
+
+const yourName = document.querySelector('.name');
+yourName.placeholder = languages[settings.currentLang].greetings[4];
+window.addEventListener('beforeunload', setLocalStorage);
+window.addEventListener('load', getLocalStorage);
+
+//Local storage------------------------------------------------------------------------------
 function setLocalStorage() {
 	localStorage.setItem('name', yourName.value);
 	localStorage.setItem('city', weatherCity.value);
@@ -231,26 +247,9 @@ function getLocalStorage() {
 		quoteHider.checked = false;
 		quoteBlock.classList.add('disabled');
 	}
-	
 }
 
-function showGreeting() {
-	const greeting = document.querySelector('.greeting');
-	const timeOfDay = getTimeOfDay();
-	if (timeOfDay === 'morning') greeting.textContent = languages[settings.currentLang].greetings[0];
-	if (timeOfDay === 'day') greeting.textContent = languages[settings.currentLang].greetings[1];
-	if (timeOfDay === 'evening') greeting.textContent = languages[settings.currentLang].greetings[2];
-	if (timeOfDay === 'night') greeting.textContent = languages[settings.currentLang].greetings[3];
-	setTimeout(showGreeting, 1000);
-} showGreeting();
-
-const yourName = document.querySelector('.name');
-yourName.placeholder = languages[settings.currentLang].greetings[4];
-window.addEventListener('beforeunload', setLocalStorage);
-window.addEventListener('load', getLocalStorage);
-
-
-//Слайдер изображений
+//Слайдер изображений------------------------------------------------------------------
 async function setBg() {
 	if (settings.imagesApi === 'Git') {
 		searchImageApi.disabled = true;
@@ -331,7 +330,7 @@ const prevSlide = document.querySelector('.slide-prev');
 nextSlide.addEventListener('click', getNextSlide);
 prevSlide.addEventListener('click', getPrevSlide);
 
-// Погода
+// Погода---------------------------------------------------------------------
 const weatherCity = document.querySelector('.city');
 weatherCity.placeholder = languages[settings.currentLang].city[0];
 weatherCity.value = languages[settings.currentLang].city[1];
@@ -385,7 +384,7 @@ async function getWeather() {
 	}
 } getWeather();
 
-// Виджет цитат
+// Виджет цитат------------------------------------------------------------------
 const quote = document.querySelector('.quote');
 const author = document.querySelector('.author');
 const qouteChange = document.querySelector('.change-quote');
@@ -403,7 +402,7 @@ async function getQuote() {
 	author.textContent = quoteText[randomQuoteNumber].author;
 } getQuote();
 
-// Аудиоплеер
+// Аудиоплеер--------------------------------------------------------------------------
 const audio = document.querySelector('.audio');
 const play = document.querySelector('.play');
 const nextSong = document.querySelector('.play-next');
