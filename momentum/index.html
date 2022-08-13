@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="assets/favicon.ico" rel="shortcut icon" />
+  <link rel="stylesheet" href="css/owfont-regular.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>momentum</title>
+</head>
+<body>
+  	<header class="header">
+		<div class="player">
+			<audio src="" class="audio"></audio>
+			<div class="player-controls">
+				<button class="play-prev player-icon"></button>
+				<button class="play player-icon"></button>
+				<button class="play-next player-icon"></button>
+			</div>
+			<div class="track-name">/track name/</div>
+			<div class="progress-container">
+				<div class="progress-bar"></div>
+			</div>
+			<div class="audio-time">
+				00:00/00:00
+			</div>
+			<ul class="play-list"></ul>
+			<div class="volume-control">
+				<button class="mute"></button>
+				<input type="range" class="volume-progress" value="25">
+			</div>
+		</div>
+		<div class="weather">
+			<input type="text" class="city" placeholder=""/>
+			<i class="weather-icon owf"></i>
+			<div class="weather-error"></div>
+			<div class="description-container">
+				<span class="temperature"></span>
+				<span class="weather-description"></span>
+			</div>
+			<div class="wind"></div>
+			<div class="humidity"></div>
+    	</div>
+  	</header>
+ 	<main class="main">
+		<div class="slider-icons">
+			<button class="slide-prev slider-icon"></button>
+			<button class="slide-next slider-icon"></button>
+		</div>
+		<time class="time"></time>
+		<date class="date"></date>
+		<div class="greeting-container">
+			<span class="greeting"></span>
+			<input type="text" class="name" placeholder=""/>
+		</div>
+	</main>
+  	<footer class="footer">
+		<button class="change-quote"></button>
+		<div>
+			<div class="quote"></div>
+			<div class="author"></div>
+		</div>
+	</footer>
+	<div class="settings">
+		<div class="language">
+			<span class="set set-lang">Language:</span>
+			<label for="ru" class="language-label ru playing">RU</label>
+			<input type="radio" name="language" id="ru" class="language-radio" value="ru" checked>
+			<label for="en" class="language-label en">EN</label>
+			<input type="radio" name="language" id="en" class="language-radio" value="en">
+			<label for="be" class="language-label be">BE</label>
+			<input type="radio" name="language" id="be" class="language-radio" value="be">
+		</div>
+		<div class="photo-source">
+			<span class="set set-image">Image API:</span>
+			<label for="git" class="api-label git playing">GIT</label>
+			<input type="radio" name="api" id="git" class="api-radio" value="Git" checked>
+			<label for="unsplash" class="api-label unsplash ">Unsplash</label>
+			<input type="radio" name="api" id="unsplash" class="api-radio" value="Unsplash">
+			<label for="flickr" class="api-label flickr">Flickr</label>
+			<input type="radio" name="api" id="flickr" class="api-radio" value="Flickr">
+		</div>
+		<div class="photo-tags">
+			<span class="set set-tag">Tag:</span>
+			<input type="text" class="search" placeholder="[Enter API tag]" value="Nature">
+		</div>
+		<div class="show-items">
+			<span class="set set-show">Show elements:</span>
+			<label for="playerBlock" class="hide-label">Player: 
+				<input type="checkbox" class="player-hider" checked>
+			</label>
+			<label for="playerBlock" class="hide-label">Weather: 
+				<input type="checkbox" class="weather-hider" checked>
+			</label>
+			<label for="playerBlock" class="hide-label">Time: 
+				<input type="checkbox" class="time-hider" checked>
+			</label>
+			<label for="playerBlock" class="hide-label">Date:
+				<input type="checkbox" class="date-hider" checked>
+			</label>
+			<label for="playerBlock" class="hide-label">Greetings:
+				<input type="checkbox" class="greeting-hider" checked>
+			</label>
+			<label for="playerBlock" class="hide-label">Quote of the day:
+				<input type="checkbox" class="footer-hider" checked>
+			</label>
+		</div>
+	</div>
+	<span class="show-settings"></span>
+  	<script src="js/script.js" type="module"></script>
+</body>
+</html>
